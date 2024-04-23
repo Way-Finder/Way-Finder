@@ -2,7 +2,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
-
+#include <adjgraph.h>>
 QT_BEGIN_NAMESPACE
 namespace Ui {
 class MainWindow;
@@ -14,8 +14,11 @@ class MainWindow : public QMainWindow
     Q_OBJECT
 
 public:
-    MainWindow(QWidget *parent = nullptr);
+    MainWindow(adjmap adj, QWidget *parent = nullptr);
     ~MainWindow();
+
+private slots:
+    void on_pricein_textEdited(const QString &arg1);
 
 private:
     Ui::MainWindow *ui;
