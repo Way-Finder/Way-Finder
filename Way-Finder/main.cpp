@@ -6,6 +6,7 @@
 #include <QMap>
 #include <QPair>
 #include <adjgraph.h>
+#include <BFSFunctionality.cpp>
 adjmap adj;
 void readfile(QString filename)
 {
@@ -45,10 +46,10 @@ void readfile(QString filename)
 
 int main(int argc, char *argv[])
 {
-    QApplication a(argc, argv);
-    readfile("TransportationMap.txt");
-
-    MainWindow w(adj);
-    w.show();
-    return a.exec();
+    //QApplication a(argc, argv);
+    //readfile("TransportationMap.txt");
+    //MainWindow w(adj);
+    //w.show();
+    BFS("Cairo","Dahab",1000,adj);
+    //return a.exec();
 }
