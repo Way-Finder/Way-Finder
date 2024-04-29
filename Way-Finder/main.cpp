@@ -46,10 +46,10 @@ void readfile(QString filename)
 
 int main(int argc, char *argv[])
 {
-    //QApplication a(argc, argv);
-    //readfile("TransportationMap.txt");
-    //MainWindow w(adj);
-    //w.show();
-    BFS("Cairo","Dahab",1000,adj);
-    //return a.exec();
+    QApplication a(argc, argv);
+    readfile("TransportationMap.txt");
+    MainWindow w(adj);
+    w.show();
+    BFS("Giza","Cairo",100000,adj);
+    return a.exec();
 }
