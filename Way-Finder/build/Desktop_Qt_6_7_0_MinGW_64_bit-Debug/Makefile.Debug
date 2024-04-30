@@ -533,6 +533,10 @@ debug/main.o: ../../main.cpp ../../mainwindow.h \
 		C:/Qt/6.7.0/mingw_64/include/QtCore/QVector \
 		C:/Qt/6.7.0/mingw_64/include/QtCore/qvector.h \
 		C:/Qt/6.7.0/mingw_64/include/QtCore/QPair
+		C:/Qt/6.7.0/mingw_64/include/QtCore/QPair \
+		../../BFSFunctionality.cpp \
+		C:/Qt/6.7.0/mingw_64/include/QtCore/QQueue \
+		C:/Qt/6.7.0/mingw_64/include/QtCore/qqueue.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\main.o ..\..\main.cpp
 
 debug/mainwindow.o: ../../mainwindow.cpp ../../mainwindow.h \

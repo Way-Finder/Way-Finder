@@ -10,6 +10,7 @@ CONFIG += c++17
 
 SOURCES += \
     depthfirstsearch.cpp \
+    BFSFunctionality.cpp \
     main.cpp \
     mainwindow.cpp
 

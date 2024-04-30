@@ -8,6 +8,7 @@
 #include <QDebug>
 #include <adjgraph.h>
 #include <depthfirstsearch.h>
+#include <BFSFunctionality.cpp>
 adjmap adj;
 void readfile(QString filename)
 {
@@ -51,5 +52,6 @@ int main(int argc, char *argv[])
     readfile("TransportationMap.txt");
     MainWindow w(adj);
     w.show();
+    BFS("Giza","Cairo",100000,adj);
     return a.exec();
 }
