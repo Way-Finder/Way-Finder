@@ -158,7 +158,6 @@ Makefile: ../../Way-Finder.pro C:/Qt/6.7.0/mingw_64/mkspecs/win32-g++/qmake.conf
 		C:/Qt/6.7.0/mingw_64/mkspecs/modules/qt_lib_insighttrackerqml_private.pri \
 		C:/Qt/6.7.0/mingw_64/mkspecs/modules/qt_lib_jpeg_private.pri \
 		C:/Qt/6.7.0/mingw_64/mkspecs/modules/qt_lib_jsonrpc_private.pri \
-		C:/Qt/6.7.0/mingw_64/mkspecs/modules/qt_lib_jpeg_private.pri \
 		C:/Qt/6.7.0/mingw_64/mkspecs/modules/qt_lib_labsanimation.pri \
 		C:/Qt/6.7.0/mingw_64/mkspecs/modules/qt_lib_labsanimation_private.pri \
 		C:/Qt/6.7.0/mingw_64/mkspecs/modules/qt_lib_labsfolderlistmodel.pri \
@@ -175,7 +174,6 @@ Makefile: ../../Way-Finder.pro C:/Qt/6.7.0/mingw_64/mkspecs/win32-g++/qmake.conf
 		C:/Qt/6.7.0/mingw_64/mkspecs/modules/qt_lib_linguist.pri \
 		C:/Qt/6.7.0/mingw_64/mkspecs/modules/qt_lib_location.pri \
 		C:/Qt/6.7.0/mingw_64/mkspecs/modules/qt_lib_location_private.pri \
-		C:/Qt/6.7.0/mingw_64/mkspecs/modules/qt_lib_linguist.pri \
 		C:/Qt/6.7.0/mingw_64/mkspecs/modules/qt_lib_multimedia.pri \
 		C:/Qt/6.7.0/mingw_64/mkspecs/modules/qt_lib_multimedia_private.pri \
 		C:/Qt/6.7.0/mingw_64/mkspecs/modules/qt_lib_multimediaquick_private.pri \
@@ -213,9 +211,6 @@ Makefile: ../../Way-Finder.pro C:/Qt/6.7.0/mingw_64/mkspecs/win32-g++/qmake.conf
 		C:/Qt/6.7.0/mingw_64/mkspecs/modules/qt_lib_protobufqtguitypes_private.pri \
 		C:/Qt/6.7.0/mingw_64/mkspecs/modules/qt_lib_protobufwellknowntypes.pri \
 		C:/Qt/6.7.0/mingw_64/mkspecs/modules/qt_lib_protobufwellknowntypes_private.pri \
-		C:/Qt/6.7.0/mingw_64/mkspecs/modules/qt_lib_png_private.pri \
-		C:/Qt/6.7.0/mingw_64/mkspecs/modules/qt_lib_printsupport.pri \
-		C:/Qt/6.7.0/mingw_64/mkspecs/modules/qt_lib_printsupport_private.pri \
 		C:/Qt/6.7.0/mingw_64/mkspecs/modules/qt_lib_qdoccatch_private.pri \
 		C:/Qt/6.7.0/mingw_64/mkspecs/modules/qt_lib_qdoccatchconversions_private.pri \
 		C:/Qt/6.7.0/mingw_64/mkspecs/modules/qt_lib_qdoccatchgenerators_private.pri \
@@ -506,7 +501,6 @@ C:/Qt/6.7.0/mingw_64/mkspecs/modules/qt_lib_insighttrackerqml.pri:
 C:/Qt/6.7.0/mingw_64/mkspecs/modules/qt_lib_insighttrackerqml_private.pri:
 C:/Qt/6.7.0/mingw_64/mkspecs/modules/qt_lib_jpeg_private.pri:
 C:/Qt/6.7.0/mingw_64/mkspecs/modules/qt_lib_jsonrpc_private.pri:
-C:/Qt/6.7.0/mingw_64/mkspecs/modules/qt_lib_jpeg_private.pri:
 C:/Qt/6.7.0/mingw_64/mkspecs/modules/qt_lib_labsanimation.pri:
 C:/Qt/6.7.0/mingw_64/mkspecs/modules/qt_lib_labsanimation_private.pri:
 C:/Qt/6.7.0/mingw_64/mkspecs/modules/qt_lib_labsfolderlistmodel.pri:
@@ -523,7 +517,6 @@ C:/Qt/6.7.0/mingw_64/mkspecs/modules/qt_lib_languageserver_private.pri:
 C:/Qt/6.7.0/mingw_64/mkspecs/modules/qt_lib_linguist.pri:
 C:/Qt/6.7.0/mingw_64/mkspecs/modules/qt_lib_location.pri:
 C:/Qt/6.7.0/mingw_64/mkspecs/modules/qt_lib_location_private.pri:
-C:/Qt/6.7.0/mingw_64/mkspecs/modules/qt_lib_linguist.pri:
 C:/Qt/6.7.0/mingw_64/mkspecs/modules/qt_lib_multimedia.pri:
 C:/Qt/6.7.0/mingw_64/mkspecs/modules/qt_lib_multimedia_private.pri:
 C:/Qt/6.7.0/mingw_64/mkspecs/modules/qt_lib_multimediaquick_private.pri:
@@ -561,9 +554,6 @@ C:/Qt/6.7.0/mingw_64/mkspecs/modules/qt_lib_protobufqtguitypes.pri:
 C:/Qt/6.7.0/mingw_64/mkspecs/modules/qt_lib_protobufqtguitypes_private.pri:
 C:/Qt/6.7.0/mingw_64/mkspecs/modules/qt_lib_protobufwellknowntypes.pri:
 C:/Qt/6.7.0/mingw_64/mkspecs/modules/qt_lib_protobufwellknowntypes_private.pri:
-C:/Qt/6.7.0/mingw_64/mkspecs/modules/qt_lib_png_private.pri:
-C:/Qt/6.7.0/mingw_64/mkspecs/modules/qt_lib_printsupport.pri:
-C:/Qt/6.7.0/mingw_64/mkspecs/modules/qt_lib_printsupport_private.pri:
 C:/Qt/6.7.0/mingw_64/mkspecs/modules/qt_lib_qdoccatch_private.pri:
 C:/Qt/6.7.0/mingw_64/mkspecs/modules/qt_lib_qdoccatchconversions_private.pri:
 C:/Qt/6.7.0/mingw_64/mkspecs/modules/qt_lib_qdoccatchgenerators_private.pri:

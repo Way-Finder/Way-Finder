@@ -12,14 +12,17 @@ SOURCES += \
     depthfirstsearch.cpp \
     BFSFunctionality.cpp \
     main.cpp \
-    mainwindow.cpp
+    mainwindow.cpp \
+    validtripsscene.cpp
 
 HEADERS += \
     depthfirstsearch.h \
-    mainwindow.h
+    mainwindow.h \
+    validtripsscene.h
 
 FORMS += \
-    mainwindow.ui
+    mainwindow.ui \
+    validtripsscene.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

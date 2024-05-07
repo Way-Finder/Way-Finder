@@ -1,4 +1,5 @@
 #include "mainwindow.h"
+#include "validtripsscene.h"
 #include <QApplication>
 #include <Qfile>
 #include <QTextStream>
@@ -50,7 +51,9 @@ int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
     readfile("TransportationMap.txt");
-    MainWindow w(adj);
+    //MainWindow w(adj);
+   // w.show();
+    ValidTripsScene w;
     w.show();
     BFS("Giza","Cairo",100000,adj);
     return a.exec();
