@@ -1,0 +1,13 @@
+debug/addedge.o
+debug/editedge.o
+debug/grapheditor.o
+debug/grapheditorsecwindow.o
+debug/main.o
+debug/mainwindow.o
+debug/newedgeinput.o
+debug/qrc_icons.o
+debug/moc_editedge.o
+debug/moc_grapheditor.o
+debug/moc_grapheditorsecwindow.o
+debug/moc_mainwindow.o
+debug/moc_newedgeinput.o

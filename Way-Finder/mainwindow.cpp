@@ -1,6 +1,6 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
-#include <adjgraph.h>>
+#include <adjgraph.h>
 MainWindow::MainWindow(adjmap adj,QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
