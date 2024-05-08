@@ -10,6 +10,7 @@
 #include <adjgraph.h>
 #include <depthfirstsearch.h>
 #include <BFSFunctionality.cpp>
+#include "tripscene.h"
 adjmap adj;
 void readfile(QString filename)
 {
@@ -54,7 +55,9 @@ int main(int argc, char *argv[])
     //MainWindow w(adj);
    // w.show();
     ValidTripsScene w("Cairo","Giza",true,70000,adj);
+
     w.show();
+    //w.show();
     //BFS("Giza","Cairo",100000,adj);
     return a.exec();
 }

@@ -13,6 +13,7 @@ MainWindow::MainWindow(adjmap adj,QWidget *parent)
     }
     ui->BEFES->setEnabled(false);
     ui->DEFES->setEnabled(false);
+
 }
 
 MainWindow::~MainWindow()
