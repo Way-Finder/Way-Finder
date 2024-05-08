@@ -1,6 +1,7 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include <adjgraph.h>>
+#include<QPixmap>
 MainWindow::MainWindow(adjmap adj,QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
@@ -13,6 +14,12 @@ MainWindow::MainWindow(adjmap adj,QWidget *parent)
     }
     ui->BEFES->setEnabled(false);
     ui->DEFES->setEnabled(false);
+    QPixmap defespic("C:/Users/moham/Documents/GitHub/Way-Finder/Way-Finder/Assets/DFS.png");
+    QPixmap befespic("C:/Users/moham/Documents/GitHub/Way-Finder/Way-Finder/Assets/BFS.png");
+
+    ui->DFS_pic->setPixmap(defespic);
+    ui->BFS_pic->setPixmap(befespic);
+
 }
 
 MainWindow::~MainWindow()

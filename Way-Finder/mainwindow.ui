@@ -6,145 +6,231 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>800</width>
-    <height>600</height>
+    <width>947</width>
+    <height>610</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QGroupBox" name="groupBox">
+   <widget class="QWidget" name="">
     <property name="geometry">
      <rect>
-      <x>220</x>
-      <y>220</y>
-      <width>361</width>
-      <height>241</height>
+      <x>0</x>
+      <y>10</y>
+      <width>1011</width>
+      <height>601</height>
      </rect>
     </property>
-    <property name="title">
-     <string>selecteth from the options below</string>
-    </property>
-    <widget class="QPushButton" name="BEFES">
-     <property name="geometry">
-      <rect>
-       <x>60</x>
-       <y>210</y>
-       <width>83</width>
-       <height>29</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>BFS</string>
-     </property>
-    </widget>
-    <widget class="QPushButton" name="DEFES">
-     <property name="geometry">
-      <rect>
-       <x>210</x>
-       <y>210</y>
-       <width>83</width>
-       <height>29</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>DFS</string>
-     </property>
-    </widget>
-    <widget class="QWidget" name="">
-     <property name="geometry">
-      <rect>
-       <x>30</x>
-       <y>50</y>
-       <width>311</width>
-       <height>151</height>
-      </rect>
-     </property>
-     <layout class="QVBoxLayout" name="verticalLayout">
-      <item>
-       <layout class="QHBoxLayout" name="horizontalLayout">
-        <item>
-         <widget class="QLabel" name="label">
-          <property name="text">
-           <string>wh're art thee anon</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QComboBox" name="depcity"/>
-        </item>
-       </layout>
-      </item>
-      <item>
-       <layout class="QHBoxLayout" name="horizontalLayout_2">
-        <item>
-         <widget class="QLabel" name="label_2">
-          <property name="text">
-           <string>wh're doth thee wanteth to wend</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QComboBox" name="destcity"/>
-        </item>
-       </layout>
-      </item>
-      <item>
-       <layout class="QHBoxLayout" name="horizontalLayout_3">
-        <item>
-         <widget class="QLabel" name="label_3">
-          <property name="text">
-           <string>state thy price</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QLineEdit" name="pricein"/>
-        </item>
-       </layout>
-      </item>
-     </layout>
-    </widget>
-   </widget>
-   <widget class="QLabel" name="label_5">
-    <property name="geometry">
-     <rect>
-      <x>290</x>
-      <y>100</y>
-      <width>251</width>
-      <height>111</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>WLECOME TO WAYFINDER</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_6">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>20</y>
-      <width>91</width>
-      <height>41</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>WAYFINDER</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton">
-    <property name="geometry">
-     <rect>
-      <x>660</x>
-      <y>550</y>
-      <width>121</width>
-      <height>29</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>EDITING PAGE</string>
-    </property>
+    <layout class="QVBoxLayout" name="verticalLayout_2">
+     <item>
+      <widget class="QGroupBox" name="groupBox">
+       <property name="styleSheet">
+        <string notr="true">background-color: rgb(133, 138, 143);</string>
+       </property>
+       <property name="title">
+        <string/>
+       </property>
+       <widget class="QWidget" name="layoutWidget">
+        <property name="geometry">
+         <rect>
+          <x>160</x>
+          <y>60</y>
+          <width>541</width>
+          <height>221</height>
+         </rect>
+        </property>
+        <layout class="QVBoxLayout" name="verticalLayout">
+         <item>
+          <layout class="QHBoxLayout" name="horizontalLayout">
+           <item>
+            <widget class="QLabel" name="label">
+             <property name="text">
+              <string>Departure City</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QComboBox" name="depcity"/>
+           </item>
+          </layout>
+         </item>
+         <item>
+          <layout class="QHBoxLayout" name="horizontalLayout_2">
+           <item>
+            <widget class="QLabel" name="label_2">
+             <property name="text">
+              <string>Arrival City</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QComboBox" name="destcity"/>
+           </item>
+          </layout>
+         </item>
+         <item>
+          <layout class="QHBoxLayout" name="horizontalLayout_3">
+           <item>
+            <widget class="QLabel" name="label_3">
+             <property name="text">
+              <string>Enter your Budget</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLabel" name="label_4">
+             <property name="text">
+              <string>                                   </string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLineEdit" name="pricein">
+             <property name="styleSheet">
+              <string notr="true">background-color: rgb(255, 255, 255);</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+        </layout>
+       </widget>
+       <widget class="QLabel" name="label_5">
+        <property name="geometry">
+         <rect>
+          <x>320</x>
+          <y>10</y>
+          <width>241</width>
+          <height>41</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>WLECOME TO WAYFINDER</string>
+        </property>
+       </widget>
+       <widget class="QGroupBox" name="groupBox_2">
+        <property name="geometry">
+         <rect>
+          <x>-10</x>
+          <y>300</y>
+          <width>961</width>
+          <height>301</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(161, 242, 255);
+background-color: rgb(203, 203, 203);</string>
+        </property>
+        <property name="title">
+         <string/>
+        </property>
+        <widget class="QPushButton" name="BEFES">
+         <property name="geometry">
+          <rect>
+           <x>440</x>
+           <y>180</y>
+           <width>121</width>
+           <height>51</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>BFS</string>
+         </property>
+        </widget>
+        <widget class="QPushButton" name="DEFES">
+         <property name="geometry">
+          <rect>
+           <x>440</x>
+           <y>60</y>
+           <width>121</width>
+           <height>51</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>DFS</string>
+         </property>
+        </widget>
+        <widget class="QPushButton" name="pushButton">
+         <property name="geometry">
+          <rect>
+           <x>810</x>
+           <y>230</y>
+           <width>121</width>
+           <height>41</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>EDITING PAGE</string>
+         </property>
+        </widget>
+        <widget class="QLabel" name="label_6">
+         <property name="geometry">
+          <rect>
+           <x>280</x>
+           <y>180</y>
+           <width>101</width>
+           <height>51</height>
+          </rect>
+         </property>
+         <property name="font">
+          <font>
+           <pointsize>12</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string>Search By :</string>
+         </property>
+        </widget>
+        <widget class="QLabel" name="label_7">
+         <property name="geometry">
+          <rect>
+           <x>280</x>
+           <y>60</y>
+           <width>101</width>
+           <height>51</height>
+          </rect>
+         </property>
+         <property name="font">
+          <font>
+           <pointsize>12</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string>Search By :</string>
+         </property>
+        </widget>
+        <widget class="QLabel" name="DFS_pic">
+         <property name="geometry">
+          <rect>
+           <x>610</x>
+           <y>20</y>
+           <width>151</width>
+           <height>121</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>TextLabel</string>
+         </property>
+        </widget>
+        <widget class="QLabel" name="BFS_pic">
+         <property name="geometry">
+          <rect>
+           <x>600</x>
+           <y>150</y>
+           <width>151</width>
+           <height>141</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>TextLabel</string>
+         </property>
+        </widget>
+       </widget>
+      </widget>
+     </item>
+    </layout>
    </widget>
   </widget>
  </widget>
