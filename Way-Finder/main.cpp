@@ -53,8 +53,8 @@ int main(int argc, char *argv[])
     readfile("TransportationMap.txt");
     //MainWindow w(adj);
    // w.show();
-    ValidTripsScene w;
+    ValidTripsScene w("Cairo","Giza",true,70000,adj);
     w.show();
-    BFS("Giza","Cairo",100000,adj);
+    //BFS("Giza","Cairo",100000,adj);
     return a.exec();
 }
