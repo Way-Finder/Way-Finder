@@ -14,8 +14,9 @@ MainWindow::MainWindow(adjmap adj,QWidget *parent)
     }
     ui->BEFES->setEnabled(false);
     ui->DEFES->setEnabled(false);
-    QPixmap defespic("C:/Users/moham/Documents/GitHub/Way-Finder/Way-Finder/Assets/DFS.png");
-    QPixmap befespic("C:/Users/moham/Documents/GitHub/Way-Finder/Way-Finder/Assets/BFS.png");
+
+    QPixmap defespic("D:/Cutie/Way-Finder/Way-Finder/Assets/DFS.png");
+    QPixmap befespic("D:/Cutie/Way-Finder/Way-Finder/Assets/BFS.png");
 
     ui->DFS_pic->setPixmap(defespic);
     ui->BFS_pic->setPixmap(befespic);

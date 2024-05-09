@@ -115,7 +115,7 @@
               </size>
              </property>
              <property name="text">
-              <string>                                 </string>
+              <string/>
              </property>
             </widget>
            </item>
@@ -167,7 +167,7 @@
          </rect>
         </property>
         <property name="styleSheet">
-         <string notr="true">background-color: rgb(161, 242, 255);
+         <string notr="true">
 background-color: rgb(203, 203, 203);</string>
         </property>
         <property name="title">
@@ -233,7 +233,7 @@ padding: 5px 10px;
 </string>
          </property>
          <property name="text">
-          <string>EDITING PAGE</string>
+          <string>Edit Graph</string>
          </property>
         </widget>
         <widget class="QLabel" name="label_6">
@@ -281,8 +281,8 @@ padding: 5px 10px;
         <widget class="QLabel" name="DFS_pic">
          <property name="geometry">
           <rect>
-           <x>610</x>
-           <y>20</y>
+           <x>600</x>
+           <y>10</y>
            <width>151</width>
            <height>121</height>
           </rect>
@@ -294,8 +294,8 @@ padding: 5px 10px;
         <widget class="QLabel" name="BFS_pic">
          <property name="geometry">
           <rect>
-           <x>600</x>
-           <y>150</y>
+           <x>610</x>
+           <y>140</y>
            <width>151</width>
            <height>141</height>
           </rect>

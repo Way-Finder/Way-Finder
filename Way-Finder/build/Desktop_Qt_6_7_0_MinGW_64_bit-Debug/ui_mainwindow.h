@@ -157,28 +157,17 @@ public:
         groupBox_2 = new QGroupBox(groupBox);
         groupBox_2->setObjectName("groupBox_2");
         groupBox_2->setGeometry(QRect(-10, 300, 961, 301));
-        groupBox_2->setStyleSheet(QString::fromUtf8("background-color: rgb(161, 242, 255);\n"
+        groupBox_2->setStyleSheet(QString::fromUtf8("\n"
 "background-color: rgb(203, 203, 203);"));
         BEFES = new QPushButton(groupBox_2);
         BEFES->setObjectName("BEFES");
         BEFES->setGeometry(QRect(440, 180, 121, 51));
-        BEFES->setStyleSheet(QString::fromUtf8("QPushButton {\n"
-"  background-color: rgb(133, 138, 143);\n"
-"  color: black;\n"
-"  border: 3px solid black;\n"
-"  border-radius: 20px;\n"
-"  padding: 5px 10px;\n"
-"  cursor: pointer;\n"
-"  transition: background-color 0.2s ease;\n"
-"}\n"
-"\n"
-"QPushButton :hover {\n"
-"  background-color: rgb(102, 107, 112);\n"
-"}\n"
-"\n"
-"QPushButton: active {\n"
-"  background-color: rgb(71, 77, 82);\n"
-"}"));
+        BEFES->setStyleSheet(QString::fromUtf8("background-color: rgb(133, 138, 143);;\n"
+"color: black;\n"
+"border: 3px solid black;\n"
+"border-radius: 20px;\n"
+"padding: 5px 10px; \n"
+""));
         DEFES = new QPushButton(groupBox_2);
         DEFES->setObjectName("DEFES");
         DEFES->setGeometry(QRect(440, 60, 121, 51));
@@ -211,10 +200,10 @@ public:
         label_7->setStyleSheet(QString::fromUtf8("color: rgb(0, 0, 0);"));
         DFS_pic = new QLabel(groupBox_2);
         DFS_pic->setObjectName("DFS_pic");
-        DFS_pic->setGeometry(QRect(610, 20, 151, 121));
+        DFS_pic->setGeometry(QRect(600, 10, 151, 121));
         BFS_pic = new QLabel(groupBox_2);
         BFS_pic->setObjectName("BFS_pic");
-        BFS_pic->setGeometry(QRect(600, 150, 151, 141));
+        BFS_pic->setGeometry(QRect(610, 140, 151, 141));
 
         verticalLayout_2->addWidget(groupBox);
 
@@ -237,7 +226,7 @@ public:
         groupBox_2->setTitle(QString());
         BEFES->setText(QCoreApplication::translate("MainWindow", "BFS", nullptr));
         DEFES->setText(QCoreApplication::translate("MainWindow", "DFS", nullptr));
-        pushButton->setText(QCoreApplication::translate("MainWindow", "EDITING PAGE", nullptr));
+        pushButton->setText(QCoreApplication::translate("MainWindow", "Edit Graph", nullptr));
         label_6->setText(QCoreApplication::translate("MainWindow", "Search By :", nullptr));
         label_7->setText(QCoreApplication::translate("MainWindow", "Search By :", nullptr));
         DFS_pic->setText(QCoreApplication::translate("MainWindow", "TextLabel", nullptr));
