@@ -381,6 +381,7 @@ Makefile: ../Way-Finder/Way-Finder.pro D:/Project_Programmes/6.7.0/mingw_64/mksp
 		D:/Project_Programmes/6.7.0/mingw_64/mkspecs/features/qt_config.prf \
 		D:/Project_Programmes/6.7.0/mingw_64/mkspecs/win32-g++/qmake.conf \
 		D:/Project_Programmes/6.7.0/mingw_64/mkspecs/features/spec_post.prf \
+		.qmake.stash \
 		D:/Project_Programmes/6.7.0/mingw_64/mkspecs/features/exclusive_builds.prf \
 		D:/Project_Programmes/6.7.0/mingw_64/mkspecs/features/toolchain.prf \
 		D:/Project_Programmes/6.7.0/mingw_64/mkspecs/features/default_pre.prf \
@@ -410,8 +411,8 @@ Makefile: ../Way-Finder/Way-Finder.pro D:/Project_Programmes/6.7.0/mingw_64/mksp
 		D:/Project_Programmes/6.7.0/mingw_64/lib/Qt6Gui.prl \
 		D:/Project_Programmes/6.7.0/mingw_64/lib/Qt6Core.prl \
 		D:/Project_Programmes/6.7.0/mingw_64/lib/Qt6EntryPoint.prl \
-		.qmake.stash \
-		D:/Project_Programmes/6.7.0/mingw_64/mkspecs/features/build_pass.prf
+		D:/Project_Programmes/6.7.0/mingw_64/mkspecs/features/build_pass.prf \
+		../Way-Finder/assets.qrc
 	$(QMAKE) -o Makefile ..\Way-Finder\Way-Finder.pro -spec win32-g++ "CONFIG+=debug" "CONFIG+=qml_debug"
 D:/Project_Programmes/6.7.0/mingw_64/mkspecs/features/spec_pre.prf:
 D:/Project_Programmes/6.7.0/mingw_64/mkspecs/features/device_config.prf:
@@ -724,6 +725,7 @@ D:/Project_Programmes/6.7.0/mingw_64/mkspecs/features/qt_functions.prf:
 D:/Project_Programmes/6.7.0/mingw_64/mkspecs/features/qt_config.prf:
 D:/Project_Programmes/6.7.0/mingw_64/mkspecs/win32-g++/qmake.conf:
 D:/Project_Programmes/6.7.0/mingw_64/mkspecs/features/spec_post.prf:
+.qmake.stash:
 D:/Project_Programmes/6.7.0/mingw_64/mkspecs/features/exclusive_builds.prf:
 D:/Project_Programmes/6.7.0/mingw_64/mkspecs/features/toolchain.prf:
 D:/Project_Programmes/6.7.0/mingw_64/mkspecs/features/default_pre.prf:
@@ -753,8 +755,8 @@ D:/Project_Programmes/6.7.0/mingw_64/lib/Qt6Widgets.prl:
 D:/Project_Programmes/6.7.0/mingw_64/lib/Qt6Gui.prl:
 D:/Project_Programmes/6.7.0/mingw_64/lib/Qt6Core.prl:
 D:/Project_Programmes/6.7.0/mingw_64/lib/Qt6EntryPoint.prl:
-.qmake.stash:
 D:/Project_Programmes/6.7.0/mingw_64/mkspecs/features/build_pass.prf:
+../Way-Finder/assets.qrc:
 qmake: FORCE
 	@$(QMAKE) -o Makefile ..\Way-Finder\Way-Finder.pro -spec win32-g++ "CONFIG+=debug" "CONFIG+=qml_debug"
 

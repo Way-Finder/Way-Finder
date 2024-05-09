@@ -1,7 +1,7 @@
 #include "validtripsscene.h"
 #include "ui_validtripsscene.h"
 #include "depthfirstsearch.h"
-#include "BFSFunctionality.cpp"
+#include "breadthfirstsearch.h"
 #include "tripscene.h"
 #include<QVBoxLayout>
 #include<QGroupBox>
@@ -22,7 +22,7 @@ ValidTripsScene::ValidTripsScene(const QString& departureCity,const QString& arr
         navigator.findMyWay(adj);
         this->validTrips = navigator.getValidPaths();
     }
-    int i = 0;
+    int i = 1;
     //QMultiMap<int, QVector<QPair<QString, Connection>>>
     for (auto it = validTrips.begin(); it != validTrips.end(); ++it,i++)
     {

@@ -1,4 +1,5 @@
 #include "mainwindow.h"
+#include "breadthfirstsearch.h"
 #include "validtripsscene.h"
 #include <QApplication>
 #include <Qfile>
@@ -9,7 +10,6 @@
 #include <QDebug>
 #include <adjgraph.h>
 #include <depthfirstsearch.h>
-#include <BFSFunctionality.cpp>
 #include "tripscene.h"
 adjmap adj;
 void readfile(QString filename)
