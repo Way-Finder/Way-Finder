@@ -2,10 +2,17 @@
 #include "ui_validtripsscene.h"
 #include "depthfirstsearch.h"
 #include "breadthfirstsearch.h"
-#include "tripscene.h"
 #include<QVBoxLayout>
 #include<QGroupBox>
 #include<QGraphicsWidget>
+#include <QString>
+#include <QMap>
+#include <QVector>
+#include <QPair>
+#include <QMultiMap>
+#include <QDebug>
+#include <QWidget>
+#include <adjgraph.h>
 ValidTripsScene::ValidTripsScene(const QString& departureCity,const QString& arrivalCity,bool traversingDFS,int budget,adjmap adj,QWidget *parent)
     : QWidget(parent)
     ,departureCity(departureCity)
@@ -15,12 +22,17 @@ ValidTripsScene::ValidTripsScene(const QString& departureCity,const QString& arr
     ui->setupUi(this);
     ui->startingLocation->setText(departureCity);
     ui->destinationLabel->setText(arrivalCity);
-
+     QMultiMap<int, QVector<QPair<QString, Connection>>> validTrips;
     if(traversingDFS)
     {
         DepthFirstSearch navigator(departureCity,arrivalCity,budget);
         navigator.findMyWay(adj);
-        this->validTrips = navigator.getValidPaths();
+        validTrips = navigator.getValidPaths();
+    }
+    else
+    {
+        BreadthFirstSearch navigator;
+        validTrips=navigator.BFS(departureCity,arrivalCity,budget,adj);
     }
     int i = 1;
     //QMultiMap<int, QVector<QPair<QString, Connection>>>
@@ -33,8 +45,15 @@ ValidTripsScene::ValidTripsScene(const QString& departureCity,const QString& arr
        title.push_back(QString::number(i));
         title+=".Price: ";
        title.push_back(QString::number(it.key()));
-        groupBox->setTitle(title);
 
+       QFont font1;
+       font1.setItalic(true);
+       font1.setBold(true);
+       font1.setPointSize(9);
+       groupBox->setFont(font1);
+       groupBox->setStyleSheet(QString::fromUtf8("color: rgb(0, 0, 0);"));
+       groupBox->setStyleSheet("QGroupBox::title { color: black; }");
+        groupBox->setTitle(title);
          for(auto path : it.value())
          {
            QWidget *widget = new QWidget(groupBox);
@@ -60,7 +79,7 @@ ValidTripsScene::ValidTripsScene(const QString& departureCity,const QString& arr
            hbox->addWidget(label2);
 
            QLabel *label3 = new QLabel(widget);
-           label3->setObjectName("Trans");
+           label3->setObjectName("Cost");
            label3->setFont(font);
            label3->setStyleSheet(QString::fromUtf8("color: rgb(0, 0, 0);"));
            label3->setAlignment(Qt::AlignCenter);

@@ -1,5 +1,5 @@
-#ifndef DEPTHFIRSTSEARCH_H
-#define DEPTHFIRSTSEARCH_H
+#ifndef BREADTHFIRSTSEARCH_H
+#define BREADTHFIRSTSEARCH_H
 #include <Qstring>
 #include <QMap>
 #include <QList>

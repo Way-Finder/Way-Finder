@@ -6,14 +6,14 @@
 #include <QQueue>
 #include<QDebug>
 #include <QMultiMap>
-
+#include "adjgraph.h"
 BreadthFirstSearch::BreadthFirstSearch()
 {
 
 }
 
 
-bool cityExistence(QVector<QPair<QString,Connection>>path,QString city)
+bool BreadthFirstSearch::cityExistence(QVector<QPair<QString,Connection>>path,QString city)
 {
     bool exist = 0;
     for(int i=0 ; i < path.size() ; i++)
@@ -27,7 +27,7 @@ bool cityExistence(QVector<QPair<QString,Connection>>path,QString city)
 
     return exist;
 }
-void insertFirstCity(QMap<QString, QVector<Connection>>&children, QQueue<QPair<int,QVector<QPair<QString,Connection>>>>&paths,int &cost)
+void BreadthFirstSearch::insertFirstCity(QMap<QString, QVector<Connection>>&children, QQueue<QPair<int,QVector<QPair<QString,Connection>>>>&paths,int &cost)
 {
     for (auto it = children.begin(); it != children.end(); ++it) {
         const QString &dest = it.key();
@@ -42,7 +42,7 @@ void insertFirstCity(QMap<QString, QVector<Connection>>&children, QQueue<QPair<i
     }
 }
 
-void insertCity(QMap<QString, QVector<Connection>>&children, QQueue<QPair<int,QVector<QPair<QString,Connection>>>>&paths,int &cost,QString &source,QPair<int,QVector<QPair<QString,Connection>>>&path)
+void BreadthFirstSearch::insertCity(QMap<QString, QVector<Connection>>&children, QQueue<QPair<int,QVector<QPair<QString,Connection>>>>&paths,int &cost,QString &source,QPair<int,QVector<QPair<QString,Connection>>>&path)
 {
     for (auto it = children.begin(); it != children.end(); ++it) {
         const QString &dest = it.key();
@@ -62,9 +62,9 @@ void insertCity(QMap<QString, QVector<Connection>>&children, QQueue<QPair<int,QV
     }
 }
 
-QMultiMap<int,QVector<QPair<QString,Connection>>> BFS(QString source,QString destination,int cost,adjmap adj)
+QMultiMap<int,QVector<QPair<QString,Connection>>> BreadthFirstSearch::BFS(QString source,QString destination,int cost,adjmap adj)
 {
-    QMultiMap<int,QVector<QPair<QString,Connection>>>validPaths;
+    QMultiMap<int,QVector<QPair<QString,Connection>>>validTrips;
 
     QQueue<QPair<int,QVector<QPair<QString,Connection>>>>paths;
 
@@ -80,26 +80,15 @@ QMultiMap<int,QVector<QPair<QString,Connection>>> BFS(QString source,QString des
 
         if(city == destination)
         {
-            validPaths.insert(path.first,path.second);
+            validTrips.insert(path.first,path.second);
             continue;
         }
         QMap<QString, QVector<Connection>>children=adj[city];
         insertCity(children,paths,cost,source,path);
 
     }
-    return validPaths;
-    for (auto it = validPaths.begin(); it != validPaths.end(); ++it) {
-        const int &totalcost = it.key();
-        qDebug()<<totalcost;
-        QVector<QPair<QString,Connection>>temp=it.value();
-        for(int i=0;i<temp.size();i++)
-        {
-            qDebug()<<temp[i].first;
-            qDebug()<<temp[i].second.vehicle;
-            qDebug()<<temp[i].second.cost;
-        }
-        qDebug()<<'\n';
-    }
+    return validTrips;
+
 }
 
 

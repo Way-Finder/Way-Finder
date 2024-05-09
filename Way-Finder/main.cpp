@@ -54,7 +54,7 @@ int main(int argc, char *argv[])
     readfile("TransportationMap.txt");
     //MainWindow w(adj);
    // w.show();
-    ValidTripsScene w("Cairo","Giza",true,70000,adj);
+    ValidTripsScene w("Cairo","Giza",false,70000,adj);
 
     w.show();
     //w.show();
