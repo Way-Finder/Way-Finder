@@ -8,6 +8,7 @@
 #include <QMap>
 #include <QPair>
 #include <adjgraph.h>
+#include <QStackedWidget>
 
 class SearchScene
 {
@@ -16,6 +17,7 @@ public:
     adjmap adj;
     void readfile(QString s);
     adjmap * getAdjMap();
+    QStackedWidget QSW;
 };
 
 #endif // SEARCHSCENE_H

@@ -1,7 +1,8 @@
 #include "searchscene.h"
-
+#include <QStackedWidget>
 SearchScene::SearchScene()
 {
+
 }
 
 void SearchScene :: readfile(QString filename)
@@ -30,8 +31,8 @@ void SearchScene :: readfile(QString filename)
                 tmper.cost = parts[i+1].toInt();
                 transportation.push_back(tmper);
             }
-            this->adj[from][to].append(transportation);
-            this->adj[to][from].append(transportation);
+            adj[from][to].append(transportation);
+            adj[to][from].append(transportation);
         }
     }
 
@@ -40,5 +41,5 @@ void SearchScene :: readfile(QString filename)
 
 adjmap* SearchScene :: getAdjMap()
 {
-    return &this->adj;
+    return &adj;
 }

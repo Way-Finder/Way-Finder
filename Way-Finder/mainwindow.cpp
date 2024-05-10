@@ -4,6 +4,8 @@
 #include <QPixmap>
 #include <grapheditorsecwindow.h>
 #include <searchscene.h>
+#include <QStackedWidget>
+
 MainWindow::MainWindow(adjmap adj,QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
@@ -47,6 +49,11 @@ void MainWindow::on_pricein_textEdited(const QString &arg1)
 
 void MainWindow::on_pushButton_pressed()
 {
-    //GraphEditorSecWindow GG = *new GraphEditorSecWindow("Cairo", "Giza", SearchScene().getAdjMap());
-    //GG.show();
+    SearchScene searchscene;
+    const QString s1 = "Cairo", s2 = "Giza";
+    GraphEditorSecWindow GG(s1, s2, SearchScene().getAdjMap());
+    this->hide();
+    GG.setModal(true);
+    GG.exec();
+
 }

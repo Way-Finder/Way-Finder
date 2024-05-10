@@ -2,7 +2,8 @@
 #include "searchscene.h"
 #include <QApplication>
 #include <adjgraph.h>
-
+#include <QStackedWidget>
+#include <grapheditorsecwindow.h>
 
 int main(int argc, char *argv[])
 {
@@ -10,7 +11,13 @@ int main(int argc, char *argv[])
     SearchScene searchscene;
     searchscene.readfile("TransportationMap.txt");
 
-    MainWindow w(searchscene.adj);
-    w.show();
+
+    const QString s1 = "Cairo", s2 = "Giza";
+    GraphEditorSecWindow GG(s1, s2, SearchScene().getAdjMap());
+    GG.show();
+
+    /*MainWindow w(searchscene.adj);
+    w.show();*/
+
     return a.exec();
 }
