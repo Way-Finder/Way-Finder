@@ -16,7 +16,8 @@ SOURCES += \
     grapheditorsecwindow.cpp \
     main.cpp \
     mainwindow.cpp \
-    newedgeinput.cpp
+    newedgeinput.cpp \
+    searchscene.cpp
 
 HEADERS += \
     addedge.h \
@@ -24,7 +25,8 @@ HEADERS += \
     grapheditor.h \
     grapheditorsecwindow.h \
     mainwindow.h \
-    newedgeinput.h
+    newedgeinput.h \
+    searchscene.h
 
 FORMS += \
     editedge.ui \

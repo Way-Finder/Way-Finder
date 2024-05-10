@@ -5,6 +5,7 @@ release/grapheditorsecwindow.o
 release/main.o
 release/mainwindow.o
 release/newedgeinput.o
+release/searchscene.o
 release/qrc_icons.o
 release/moc_editedge.o
 release/moc_grapheditor.o

@@ -1,7 +1,9 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
-#include <adjgraph.h>>
-#include<QPixmap>
+#include <adjgraph.h>
+#include <QPixmap>
+#include <grapheditorsecwindow.h>
+#include <searchscene.h>
 MainWindow::MainWindow(adjmap adj,QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
@@ -42,3 +44,9 @@ void MainWindow::on_pricein_textEdited(const QString &arg1)
     }
 }
 
+
+void MainWindow::on_pushButton_pressed()
+{
+    //GraphEditorSecWindow GG = *new GraphEditorSecWindow("Cairo", "Giza", SearchScene().getAdjMap());
+    //GG.show();
+}

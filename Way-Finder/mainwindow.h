@@ -1,8 +1,8 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
-
 #include <QMainWindow>
 #include <adjgraph.h>
+
 QT_BEGIN_NAMESPACE
 namespace Ui {
 class MainWindow;
@@ -19,6 +19,8 @@ public:
 
 private slots:
     void on_pricein_textEdited(const QString &arg1);
+
+    void on_pushButton_pressed();
 
 private:
     Ui::MainWindow *ui;
