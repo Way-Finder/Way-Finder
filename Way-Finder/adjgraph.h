@@ -17,5 +17,5 @@ struct Connection {
     }
 
 };
-typedef QMap<QString, QMap<QString, QList<Connection>>> adjmap;
+typedef QMap<QString, QMap<QString, QVector<Connection>>> adjmap;
 #endif // ADJGRAPH_H
