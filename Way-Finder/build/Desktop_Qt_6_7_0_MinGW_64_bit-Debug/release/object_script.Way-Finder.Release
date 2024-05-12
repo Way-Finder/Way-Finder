@@ -6,9 +6,13 @@ release/main.o
 release/mainwindow.o
 release/newedgeinput.o
 release/searchscene.o
+release/breadthfirstsearch.o
+release/depthfirstsearch.o
+release/validtripsscene.o
 release/qrc_icons.o
 release/moc_editedge.o
 release/moc_grapheditor.o
 release/moc_grapheditorsecwindow.o
 release/moc_mainwindow.o
 release/moc_newedgeinput.o
+release/moc_validtripsscene.o

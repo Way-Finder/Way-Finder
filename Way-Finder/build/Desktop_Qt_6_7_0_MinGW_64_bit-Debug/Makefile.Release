@@ -57,12 +57,16 @@ SOURCES       = ..\..\addedge.cpp \
 		..\..\main.cpp \
 		..\..\mainwindow.cpp \
 		..\..\newedgeinput.cpp \
-		..\..\searchscene.cpp release\qrc_icons.cpp \
+		..\..\searchscene.cpp \
+		..\..\breadthfirstsearch.cpp \
+		..\..\depthfirstsearch.cpp \
+		..\..\validtripsscene.cpp release\qrc_icons.cpp \
 		release\moc_editedge.cpp \
 		release\moc_grapheditor.cpp \
 		release\moc_grapheditorsecwindow.cpp \
 		release\moc_mainwindow.cpp \
-		release\moc_newedgeinput.cpp
+		release\moc_newedgeinput.cpp \
+		release\moc_validtripsscene.cpp
 OBJECTS       = release/addedge.o \
 		release/editedge.o \
 		release/grapheditor.o \
@@ -71,12 +75,16 @@ OBJECTS       = release/addedge.o \
 		release/mainwindow.o \
 		release/newedgeinput.o \
 		release/searchscene.o \
+		release/breadthfirstsearch.o \
+		release/depthfirstsearch.o \
+		release/validtripsscene.o \
 		release/qrc_icons.o \
 		release/moc_editedge.o \
 		release/moc_grapheditor.o \
 		release/moc_grapheditorsecwindow.o \
 		release/moc_mainwindow.o \
-		release/moc_newedgeinput.o
+		release/moc_newedgeinput.o \
+		release/moc_validtripsscene.o
 
 DIST          =  ..\..\addedge.h \
 		..\..\editedge.h \
@@ -84,14 +92,21 @@ DIST          =  ..\..\addedge.h \
 		..\..\grapheditorsecwindow.h \
 		..\..\mainwindow.h \
 		..\..\newedgeinput.h \
-		..\..\searchscene.h ..\..\addedge.cpp \
+		..\..\searchscene.h \
+		..\..\depthfirstsearch.h \
+		..\..\breadthfirstsearch.h \
+		..\..\depthfirstsearch.h \
+		..\..\validtripsscene.h ..\..\addedge.cpp \
 		..\..\editedge.cpp \
 		..\..\grapheditor.cpp \
 		..\..\grapheditorsecwindow.cpp \
 		..\..\main.cpp \
 		..\..\mainwindow.cpp \
 		..\..\newedgeinput.cpp \
-		..\..\searchscene.cpp
+		..\..\searchscene.cpp \
+		..\..\breadthfirstsearch.cpp \
+		..\..\depthfirstsearch.cpp \
+		..\..\validtripsscene.cpp
 QMAKE_TARGET  = Way-Finder
 DESTDIR        = release\ #avoid trailing-slash linebreak
 TARGET         = Way-Finder.exe
@@ -102,7 +117,7 @@ DESTDIR_TARGET = release\Way-Finder.exe
 first: all
 all: Makefile.Release  release/Way-Finder.exe
 
-release/Way-Finder.exe: D:/Apps/CUTIE/6.7.0/mingw_64/lib/libQt6Svg.a D:/Apps/CUTIE/6.7.0/mingw_64/lib/libQt6Widgets.a D:/Apps/CUTIE/6.7.0/mingw_64/lib/libQt6Gui.a D:/Apps/CUTIE/6.7.0/mingw_64/lib/libQt6Core.a D:/Apps/CUTIE/6.7.0/mingw_64/lib/libQt6EntryPoint.a ui_editedge.h ui_grapheditor.h ui_grapheditorsecwindow.h ui_mainwindow.h ui_newedgeinput.h $(OBJECTS) 
+release/Way-Finder.exe: D:/Apps/CUTIE/6.7.0/mingw_64/lib/libQt6Svg.a D:/Apps/CUTIE/6.7.0/mingw_64/lib/libQt6Widgets.a D:/Apps/CUTIE/6.7.0/mingw_64/lib/libQt6Gui.a D:/Apps/CUTIE/6.7.0/mingw_64/lib/libQt6Core.a D:/Apps/CUTIE/6.7.0/mingw_64/lib/libQt6EntryPoint.a ui_editedge.h ui_grapheditor.h ui_grapheditorsecwindow.h ui_mainwindow.h ui_newedgeinput.h ui_validtripsscene.h $(OBJECTS) 
 	$(LINKER) $(LFLAGS) -o $(DESTDIR_TARGET) @release\object_script.Way-Finder.Release $(LIBS)
 
 qmake: FORCE
@@ -111,10 +126,10 @@ qmake: FORCE
 qmake_all: FORCE
 
 dist:
-	$(ZIP) Way-Finder.zip $(SOURCES) $(DIST) ..\..\..\..\Way-Finder.pro D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\features\spec_pre.prf D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\features\device_config.prf D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\common\sanitize.conf D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\common\gcc-base.conf D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\common\g++-base.conf D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\features\win32\windows_vulkan_sdk.prf D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\common\windows-vulkan.conf D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\common\g++-win32.conf D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\common\windows-desktop.conf D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\qconfig.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_ext_freetype.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_ext_libjpeg.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_ext_libpng.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_charts.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_charts_private.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_chartsqml.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_chartsqml_private.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_concurrent.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_concurrent_private.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_core.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_core_private.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_dbus.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_dbus_private.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_designer.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_designer_private.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_designercomponents_private.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_devicediscovery_support_private.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_entrypoint_private.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_example_icons_private.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_fb_support_private.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_freetype_private.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_gui.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_gui_private.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_harfbuzz_private.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_help.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_help_private.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_jpeg_private.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_labsanimation.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_labsanimation_private.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_labsfolderlistmodel.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_labsfolderlistmodel_private.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_labsqmlmodels.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_labsqmlmodels_private.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_labssettings.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_labssettings_private.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_labssharedimage.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_labssharedimage_private.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_labswavefrontmesh.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_labswavefrontmesh_private.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_linguist.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_multimedia.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_multimedia_private.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_multimediaquick_private.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_multimediawidgets.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_multimediawidgets_private.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_network.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_network_private.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_opengl.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_opengl_private.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_openglwidgets.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_openglwidgets_private.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_packetprotocol_private.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_png_private.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_printsupport.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_printsupport_private.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_qdoccatch_private.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_qdoccatchconversions_private.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_qdoccatchgenerators_private.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_qml.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_qml_private.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_qmlbuiltins.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_qmlbuiltins_private.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_qmlcompiler.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_qmlcompiler_private.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_qmlcore.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_qmlcore_private.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_qmldebug_private.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_qmldom_private.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_qmlintegration.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_qmlintegration_private.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_qmllocalstorage.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_qmllocalstorage_private.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_qmlls_private.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_qmlmodels.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_qmlmodels_private.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_qmlnetwork.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_qmlnetwork_private.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_qmltest.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_qmltest_private.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_qmltoolingsettings_private.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_qmltyperegistrar_private.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_qmlworkerscript.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_qmlworkerscript_private.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_qmlxmllistmodel.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_qmlxmllistmodel_private.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_quick.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_quick3d.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_quick3d_private.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_quick3dassetimport.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_quick3dassetimport_private.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_quick3dassetutils.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_quick3dassetutils_private.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_quick3deffects.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_quick3deffects_private.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_quick3dglslparser_private.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_quick3dhelpers.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_quick3dhelpers_private.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_quick3dhelpersimpl.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_quick3dhelpersimpl_private.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_quick3diblbaker.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_quick3diblbaker_private.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_quick3dparticleeffects.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_quick3dparticleeffects_private.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_quick3dparticles.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_quick3dparticles_private.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_quick3druntimerender.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_quick3druntimerender_private.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_quick3dspatialaudio_private.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_quick3dutils.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_quick3dutils_private.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_quick_private.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_quickcontrols2.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_quickcontrols2_private.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_quickcontrols2basic.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_quickcontrols2basic_private.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_quickcontrols2basicstyleimpl.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_quickcontrols2basicstyleimpl_private.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_quickcontrols2fusion.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_quickcontrols2fusion_private.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_quickcontrols2fusionstyleimpl.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_quickcontrols2fusionstyleimpl_private.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_quickcontrols2imagine.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_quickcontrols2imagine_private.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_quickcontrols2imaginestyleimpl.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_quickcontrols2imaginestyleimpl_private.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_quickcontrols2impl.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_quickcontrols2impl_private.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_quickcontrols2material.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_quickcontrols2material_private.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_quickcontrols2materialstyleimpl.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_quickcontrols2materialstyleimpl_private.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_quickcontrols2universal.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_quickcontrols2universal_private.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_quickcontrols2universalstyleimpl.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_quickcontrols2universalstyleimpl_private.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_quickcontrols2windowsstyleimpl.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_quickcontrols2windowsstyleimpl_private.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_quickcontrolstestutilsprivate_private.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_quickdialogs2.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_quickdialogs2_private.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_quickdialogs2quickimpl.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_quickdialogs2quickimpl_private.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_quickdialogs2utils.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_quickdialogs2utils_private.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_quickeffects_private.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_quicklayouts.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_quicklayouts_private.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_quickparticles_private.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_quickshapes_private.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_quicktemplates2.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_quicktemplates2_private.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_quicktestutilsprivate_private.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_quicktimeline.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_quicktimeline_private.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_quicktimelineblendtrees.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_quicktimelineblendtrees_private.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_quickwidgets.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_quickwidgets_private.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_shadertools.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_shadertools_private.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_spatialaudio.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_spatialaudio_private.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_sql.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_sql_private.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_svg.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_svg_private.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_svgwidgets.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_svgwidgets_private.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_testlib.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_testlib_private.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_tools_private.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_uiplugin.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_uitools.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_uitools_private.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_widgets.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_widgets_private.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_xml.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_xml_private.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_zlib_private.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\features\qt_functions.prf D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\features\qt_config.prf D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\win32-g++\qmake.conf D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\features\spec_post.prf .qmake.stash D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\features\exclusive_builds.prf D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\features\toolchain.prf D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\features\default_pre.prf D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\features\win32\default_pre.prf D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\features\resolve_config.prf D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\features\exclusive_builds_post.prf D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\features\default_post.prf D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\features\build_pass.prf D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\features\qml_debug.prf D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\features\precompile_header.prf D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\features\warn_on.prf D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\features\permissions.prf D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\features\qt.prf D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\features\resources_functions.prf D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\features\resources.prf D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\features\moc.prf D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\features\win32\opengl.prf D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\features\uic.prf D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\features\qmake_use.prf D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\features\file_copies.prf D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\features\win32\windows.prf D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\features\testcase_targets.prf D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\features\exceptions.prf D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\features\yacc.prf D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\features\lex.prf ..\..\Way-Finder.pro ..\..\icons.qrc D:\Apps\CUTIE\6.7.0\mingw_64\lib\Qt6Svg.prl D:\Apps\CUTIE\6.7.0\mingw_64\lib\Qt6Widgets.prl D:\Apps\CUTIE\6.7.0\mingw_64\lib\Qt6Gui.prl D:\Apps\CUTIE\6.7.0\mingw_64\lib\Qt6Core.prl D:\Apps\CUTIE\6.7.0\mingw_64\lib\Qt6EntryPoint.prl   ..\..\icons.qrc D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\features\data\dummy.cpp ..\..\addedge.h ..\..\editedge.h ..\..\grapheditor.h ..\..\grapheditorsecwindow.h ..\..\mainwindow.h ..\..\newedgeinput.h ..\..\searchscene.h  ..\..\addedge.cpp ..\..\editedge.cpp ..\..\grapheditor.cpp ..\..\grapheditorsecwindow.cpp ..\..\main.cpp ..\..\mainwindow.cpp ..\..\newedgeinput.cpp ..\..\searchscene.cpp ..\..\editedge.ui ..\..\grapheditor.ui ..\..\grapheditorsecwindow.ui ..\..\mainwindow.ui ..\..\newedgeinput.ui    
+	$(ZIP) Way-Finder.zip $(SOURCES) $(DIST) ..\..\..\..\Way-Finder.pro D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\features\spec_pre.prf D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\features\device_config.prf D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\common\sanitize.conf D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\common\gcc-base.conf D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\common\g++-base.conf D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\features\win32\windows_vulkan_sdk.prf D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\common\windows-vulkan.conf D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\common\g++-win32.conf D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\common\windows-desktop.conf D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\qconfig.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_ext_freetype.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_ext_libjpeg.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_ext_libpng.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_charts.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_charts_private.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_chartsqml.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_chartsqml_private.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_concurrent.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_concurrent_private.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_core.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_core_private.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_dbus.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_dbus_private.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_designer.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_designer_private.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_designercomponents_private.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_devicediscovery_support_private.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_entrypoint_private.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_example_icons_private.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_fb_support_private.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_freetype_private.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_gui.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_gui_private.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_harfbuzz_private.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_help.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_help_private.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_jpeg_private.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_labsanimation.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_labsanimation_private.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_labsfolderlistmodel.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_labsfolderlistmodel_private.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_labsqmlmodels.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_labsqmlmodels_private.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_labssettings.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_labssettings_private.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_labssharedimage.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_labssharedimage_private.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_labswavefrontmesh.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_labswavefrontmesh_private.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_linguist.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_multimedia.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_multimedia_private.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_multimediaquick_private.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_multimediawidgets.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_multimediawidgets_private.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_network.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_network_private.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_opengl.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_opengl_private.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_openglwidgets.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_openglwidgets_private.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_packetprotocol_private.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_png_private.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_printsupport.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_printsupport_private.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_qdoccatch_private.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_qdoccatchconversions_private.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_qdoccatchgenerators_private.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_qml.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_qml_private.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_qmlbuiltins.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_qmlbuiltins_private.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_qmlcompiler.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_qmlcompiler_private.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_qmlcore.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_qmlcore_private.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_qmldebug_private.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_qmldom_private.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_qmlintegration.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_qmlintegration_private.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_qmllocalstorage.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_qmllocalstorage_private.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_qmlls_private.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_qmlmodels.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_qmlmodels_private.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_qmlnetwork.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_qmlnetwork_private.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_qmltest.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_qmltest_private.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_qmltoolingsettings_private.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_qmltyperegistrar_private.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_qmlworkerscript.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_qmlworkerscript_private.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_qmlxmllistmodel.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_qmlxmllistmodel_private.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_quick.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_quick3d.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_quick3d_private.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_quick3dassetimport.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_quick3dassetimport_private.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_quick3dassetutils.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_quick3dassetutils_private.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_quick3deffects.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_quick3deffects_private.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_quick3dglslparser_private.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_quick3dhelpers.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_quick3dhelpers_private.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_quick3dhelpersimpl.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_quick3dhelpersimpl_private.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_quick3diblbaker.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_quick3diblbaker_private.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_quick3dparticleeffects.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_quick3dparticleeffects_private.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_quick3dparticles.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_quick3dparticles_private.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_quick3druntimerender.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_quick3druntimerender_private.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_quick3dspatialaudio_private.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_quick3dutils.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_quick3dutils_private.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_quick_private.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_quickcontrols2.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_quickcontrols2_private.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_quickcontrols2basic.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_quickcontrols2basic_private.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_quickcontrols2basicstyleimpl.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_quickcontrols2basicstyleimpl_private.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_quickcontrols2fusion.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_quickcontrols2fusion_private.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_quickcontrols2fusionstyleimpl.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_quickcontrols2fusionstyleimpl_private.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_quickcontrols2imagine.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_quickcontrols2imagine_private.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_quickcontrols2imaginestyleimpl.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_quickcontrols2imaginestyleimpl_private.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_quickcontrols2impl.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_quickcontrols2impl_private.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_quickcontrols2material.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_quickcontrols2material_private.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_quickcontrols2materialstyleimpl.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_quickcontrols2materialstyleimpl_private.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_quickcontrols2universal.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_quickcontrols2universal_private.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_quickcontrols2universalstyleimpl.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_quickcontrols2universalstyleimpl_private.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_quickcontrols2windowsstyleimpl.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_quickcontrols2windowsstyleimpl_private.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_quickcontrolstestutilsprivate_private.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_quickdialogs2.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_quickdialogs2_private.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_quickdialogs2quickimpl.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_quickdialogs2quickimpl_private.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_quickdialogs2utils.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_quickdialogs2utils_private.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_quickeffects_private.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_quicklayouts.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_quicklayouts_private.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_quickparticles_private.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_quickshapes_private.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_quicktemplates2.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_quicktemplates2_private.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_quicktestutilsprivate_private.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_quicktimeline.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_quicktimeline_private.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_quicktimelineblendtrees.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_quicktimelineblendtrees_private.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_quickwidgets.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_quickwidgets_private.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_shadertools.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_shadertools_private.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_spatialaudio.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_spatialaudio_private.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_sql.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_sql_private.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_svg.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_svg_private.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_svgwidgets.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_svgwidgets_private.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_testlib.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_testlib_private.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_tools_private.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_uiplugin.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_uitools.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_uitools_private.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_widgets.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_widgets_private.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_xml.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_xml_private.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\modules\qt_lib_zlib_private.pri D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\features\qt_functions.prf D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\features\qt_config.prf D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\win32-g++\qmake.conf D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\features\spec_post.prf .qmake.stash D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\features\exclusive_builds.prf D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\features\toolchain.prf D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\features\default_pre.prf D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\features\win32\default_pre.prf D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\features\resolve_config.prf D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\features\exclusive_builds_post.prf D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\features\default_post.prf D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\features\build_pass.prf D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\features\qml_debug.prf D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\features\precompile_header.prf D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\features\warn_on.prf D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\features\permissions.prf D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\features\qt.prf D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\features\resources_functions.prf D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\features\resources.prf D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\features\moc.prf D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\features\win32\opengl.prf D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\features\uic.prf D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\features\qmake_use.prf D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\features\file_copies.prf D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\features\win32\windows.prf D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\features\testcase_targets.prf D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\features\exceptions.prf D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\features\yacc.prf D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\features\lex.prf ..\..\Way-Finder.pro ..\..\icons.qrc D:\Apps\CUTIE\6.7.0\mingw_64\lib\Qt6Svg.prl D:\Apps\CUTIE\6.7.0\mingw_64\lib\Qt6Widgets.prl D:\Apps\CUTIE\6.7.0\mingw_64\lib\Qt6Gui.prl D:\Apps\CUTIE\6.7.0\mingw_64\lib\Qt6Core.prl D:\Apps\CUTIE\6.7.0\mingw_64\lib\Qt6EntryPoint.prl   ..\..\icons.qrc D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\features\data\dummy.cpp ..\..\addedge.h ..\..\editedge.h ..\..\grapheditor.h ..\..\grapheditorsecwindow.h ..\..\mainwindow.h ..\..\newedgeinput.h ..\..\searchscene.h ..\..\depthfirstsearch.h ..\..\breadthfirstsearch.h ..\..\depthfirstsearch.h ..\..\validtripsscene.h  ..\..\addedge.cpp ..\..\editedge.cpp ..\..\grapheditor.cpp ..\..\grapheditorsecwindow.cpp ..\..\main.cpp ..\..\mainwindow.cpp ..\..\newedgeinput.cpp ..\..\searchscene.cpp ..\..\breadthfirstsearch.cpp ..\..\depthfirstsearch.cpp ..\..\validtripsscene.cpp ..\..\editedge.ui ..\..\grapheditor.ui ..\..\grapheditorsecwindow.ui ..\..\mainwindow.ui ..\..\newedgeinput.ui ..\..\validtripsscene.ui    
 
 clean: compiler_clean 
-	-$(DEL_FILE) release\addedge.o release\editedge.o release\grapheditor.o release\grapheditorsecwindow.o release\main.o release\mainwindow.o release\newedgeinput.o release\searchscene.o release\qrc_icons.o release\moc_editedge.o release\moc_grapheditor.o release\moc_grapheditorsecwindow.o release\moc_mainwindow.o release\moc_newedgeinput.o
+	-$(DEL_FILE) release\addedge.o release\editedge.o release\grapheditor.o release\grapheditorsecwindow.o release\main.o release\mainwindow.o release\newedgeinput.o release\searchscene.o release\breadthfirstsearch.o release\depthfirstsearch.o release\validtripsscene.o release\qrc_icons.o release\moc_editedge.o release\moc_grapheditor.o release\moc_grapheditorsecwindow.o release\moc_mainwindow.o release\moc_newedgeinput.o release\moc_validtripsscene.o
 
 distclean: clean 
 	-$(DEL_FILE) .qmake.stash
@@ -145,9 +160,9 @@ compiler_moc_predefs_clean:
 release/moc_predefs.h: D:/Apps/CUTIE/6.7.0/mingw_64/mkspecs/features/data/dummy.cpp
 	g++ -fno-keep-inline-dllexport -O2 -std=gnu++1z -Wall -Wextra -Wextra -dM -E -o release\moc_predefs.h D:\Apps\CUTIE\6.7.0\mingw_64\mkspecs\features\data\dummy.cpp
 
-compiler_moc_header_make_all: release/moc_editedge.cpp release/moc_grapheditor.cpp release/moc_grapheditorsecwindow.cpp release/moc_mainwindow.cpp release/moc_newedgeinput.cpp
+compiler_moc_header_make_all: release/moc_editedge.cpp release/moc_grapheditor.cpp release/moc_grapheditorsecwindow.cpp release/moc_mainwindow.cpp release/moc_newedgeinput.cpp release/moc_validtripsscene.cpp
 compiler_moc_header_clean:
-	-$(DEL_FILE) release\moc_editedge.cpp release\moc_grapheditor.cpp release\moc_grapheditorsecwindow.cpp release\moc_mainwindow.cpp release\moc_newedgeinput.cpp
+	-$(DEL_FILE) release\moc_editedge.cpp release\moc_grapheditor.cpp release\moc_grapheditorsecwindow.cpp release\moc_mainwindow.cpp release\moc_newedgeinput.cpp release\moc_validtripsscene.cpp
 release/moc_editedge.cpp: ../../editedge.h \
 		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtWidgets/QDialog \
 		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtWidgets/qdialog.h \
@@ -1166,13 +1181,212 @@ release/moc_newedgeinput.cpp: ../../newedgeinput.h \
 		D:/Apps/CUTIE/6.7.0/mingw_64/bin/moc.exe
 	D:\Apps\CUTIE\6.7.0\mingw_64\bin\moc.exe $(DEFINES) --include D:/Cutie/Way-Finder/Way-Finder/build/Desktop_Qt_6_7_0_MinGW_64_bit-Debug/release/moc_predefs.h -ID:/Apps/CUTIE/6.7.0/mingw_64/mkspecs/win32-g++ -ID:/Cutie/Way-Finder/Way-Finder -ID:/Apps/CUTIE/6.7.0/mingw_64/include -ID:/Apps/CUTIE/6.7.0/mingw_64/include/QtSvg -ID:/Apps/CUTIE/6.7.0/mingw_64/include/QtWidgets -ID:/Apps/CUTIE/6.7.0/mingw_64/include/QtGui -ID:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore -I. -ID:/Apps/CUTIE/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++ -ID:/Apps/CUTIE/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/x86_64-w64-mingw32 -ID:/Apps/CUTIE/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/backward -ID:/Apps/CUTIE/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include -ID:/Apps/CUTIE/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include-fixed -ID:/Apps/CUTIE/Tools/mingw1120_64/x86_64-w64-mingw32/include ..\..\newedgeinput.h -o release\moc_newedgeinput.cpp
 
+release/moc_validtripsscene.cpp: ../../validtripsscene.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/QString \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qstring.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qchar.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qglobal.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qtversionchecks.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qtconfiginclude.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qconfig.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qtcore-config.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qtconfigmacros.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qtcoreexports.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qcompilerdetection.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qsystemdetection.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qprocessordetection.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qtdeprecationmarkers.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qtpreprocessorsupport.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qassert.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qtnoop.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qtypes.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qtversion.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qtclasshelpermacros.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qtypeinfo.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qcontainerfwd.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qsysinfo.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qlogging.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qflags.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qcompare_impl.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qatomic.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qbasicatomic.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qatomic_cxx11.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qgenericatomic.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qyieldcpu.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qconstructormacros.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qdarwinhelpers.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qexceptionhandling.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qforeach.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qttypetraits.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qfunctionpointer.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qglobalstatic.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qmalloc.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qminmax.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qnumeric.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qoverload.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qswap.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qtenvironmentvariables.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qtresource.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qttranslation.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qversiontagging.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qstringview.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qbytearray.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qrefcount.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qnamespace.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qtmetamacros.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qarraydata.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qpair.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qarraydatapointer.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qarraydataops.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qcontainertools_impl.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qxptype_traits.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/q20functional.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/q20memory.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qbytearrayalgorithms.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qbytearrayview.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qstringfwd.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/q20type_traits.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qstringliteral.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qstringalgorithms.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qlatin1stringview.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qanystringview.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qutf8stringview.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qstringtokenizer.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qstringbuilder.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qstringconverter.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qstringconverter_base.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/QMap \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qmap.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qiterator.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qlist.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qhashfunctions.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qbytearraylist.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qstringlist.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qalgorithms.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qstringmatcher.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qshareddata.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qshareddata_impl.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/QVector \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qvector.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/QPair \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/QMultiMap \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/QDebug \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qdebug.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qtextstream.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qiodevicebase.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qscopedpointer.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qcontiguouscache.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qsharedpointer.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qsharedpointer_impl.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qmetatype.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qcompare.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qcomparehelpers.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qdatastream.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qfloat16.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qmath.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qiterable.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qmetacontainer.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qcontainerinfo.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qtaggedpointer.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qobjectdefs.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qobjectdefs_impl.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qfunctionaltools_impl.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qscopeguard.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qset.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qhash.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qvarlengtharray.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtWidgets/QWidget \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtWidgets/qwidget.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtWidgets/qtwidgetsglobal.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtGui/qtguiglobal.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtGui/qtgui-config.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtGui/qtguiexports.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtWidgets/qtwidgets-config.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtWidgets/qtwidgetsexports.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtGui/qwindowdefs.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtGui/qwindowdefs_win.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qobject.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qcoreevent.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qobject_impl.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qbindingstorage.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qmargins.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/q23utility.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtGui/qaction.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtGui/qkeysequence.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtGui/qicon.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qsize.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtGui/qpixmap.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtGui/qpaintdevice.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qrect.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qpoint.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtGui/qcolor.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtGui/qrgb.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtGui/qrgba64.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtGui/qimage.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtGui/qpixelformat.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtGui/qtransform.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtGui/qpolygon.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtGui/qregion.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qline.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qvariant.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtGui/qpalette.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtGui/qbrush.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtGui/qfont.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qendian.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtGui/qfontmetrics.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtGui/qfontinfo.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtWidgets/qsizepolicy.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtGui/qcursor.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtGui/qbitmap.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtGui/qevent.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qiodevice.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qurl.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtGui/qeventpoint.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtGui/qvector2d.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtGui/qvectornd.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtGui/qpointingdevice.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtGui/qinputdevice.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtGui/qscreen.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/QList \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/QObject \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/QRect \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/QSize \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/QSizeF \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtGui/QTransform \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qnativeinterface.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtGui/qscreen_platform.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtGui/qguiapplication.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qcoreapplication.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qdeadlinetimer.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qelapsedtimer.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qeventloop.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qcoreapplication_platform.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qfuture.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qfutureinterface.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qmutex.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qtsan_impl.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qresultstore.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qfuture_impl.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qthreadpool.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qthread.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qrunnable.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qexception.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qpromise.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtGui/qinputmethod.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qlocale.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtGui/qguiapplication_platform.h \
+		../../adjgraph.h \
+		release/moc_predefs.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/bin/moc.exe
+	D:\Apps\CUTIE\6.7.0\mingw_64\bin\moc.exe $(DEFINES) --include D:/Cutie/Way-Finder/Way-Finder/build/Desktop_Qt_6_7_0_MinGW_64_bit-Debug/release/moc_predefs.h -ID:/Apps/CUTIE/6.7.0/mingw_64/mkspecs/win32-g++ -ID:/Cutie/Way-Finder/Way-Finder -ID:/Apps/CUTIE/6.7.0/mingw_64/include -ID:/Apps/CUTIE/6.7.0/mingw_64/include/QtSvg -ID:/Apps/CUTIE/6.7.0/mingw_64/include/QtWidgets -ID:/Apps/CUTIE/6.7.0/mingw_64/include/QtGui -ID:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore -I. -ID:/Apps/CUTIE/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++ -ID:/Apps/CUTIE/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/x86_64-w64-mingw32 -ID:/Apps/CUTIE/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/backward -ID:/Apps/CUTIE/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include -ID:/Apps/CUTIE/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include-fixed -ID:/Apps/CUTIE/Tools/mingw1120_64/x86_64-w64-mingw32/include ..\..\validtripsscene.h -o release\moc_validtripsscene.cpp
+
 compiler_moc_objc_header_make_all:
 compiler_moc_objc_header_clean:
 compiler_moc_source_make_all:
 compiler_moc_source_clean:
-compiler_uic_make_all: ui_editedge.h ui_grapheditor.h ui_grapheditorsecwindow.h ui_mainwindow.h ui_newedgeinput.h
+compiler_uic_make_all: ui_editedge.h ui_grapheditor.h ui_grapheditorsecwindow.h ui_mainwindow.h ui_newedgeinput.h ui_validtripsscene.h
 compiler_uic_clean:
-	-$(DEL_FILE) ui_editedge.h ui_grapheditor.h ui_grapheditorsecwindow.h ui_mainwindow.h ui_newedgeinput.h
+	-$(DEL_FILE) ui_editedge.h ui_grapheditor.h ui_grapheditorsecwindow.h ui_mainwindow.h ui_newedgeinput.h ui_validtripsscene.h
 ui_editedge.h: ../../editedge.ui \
 		D:/Apps/CUTIE/6.7.0/mingw_64/bin/uic.exe
 	D:\Apps\CUTIE\6.7.0\mingw_64\bin\uic.exe ..\..\editedge.ui -o ui_editedge.h
@@ -1192,6 +1406,10 @@ ui_mainwindow.h: ../../mainwindow.ui \
 ui_newedgeinput.h: ../../newedgeinput.ui \
 		D:/Apps/CUTIE/6.7.0/mingw_64/bin/uic.exe
 	D:\Apps\CUTIE\6.7.0\mingw_64\bin\uic.exe ..\..\newedgeinput.ui -o ui_newedgeinput.h
+
+ui_validtripsscene.h: ../../validtripsscene.ui \
+		D:/Apps/CUTIE/6.7.0/mingw_64/bin/uic.exe
+	D:\Apps\CUTIE\6.7.0\mingw_64\bin\uic.exe ..\..\validtripsscene.ui -o ui_validtripsscene.h
 
 compiler_yacc_decl_make_all:
 compiler_yacc_decl_clean:
@@ -2206,7 +2424,27 @@ release/main.o: ../../main.cpp ../../mainwindow.h \
 		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/QTextStream \
 		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/QVector \
 		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qvector.h \
-		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/QPair
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/QPair \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtWidgets/QStackedWidget \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtWidgets/qstackedwidget.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtWidgets/qframe.h \
+		../../grapheditorsecwindow.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtWidgets/QDialog \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtWidgets/qdialog.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtWidgets/QWidget \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtWidgets/QComboBox \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtWidgets/qcombobox.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtWidgets/qabstractitemdelegate.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtWidgets/qstyleoption.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtWidgets/qabstractspinbox.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtGui/qvalidator.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qregularexpression.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtWidgets/qslider.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtWidgets/qabstractslider.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtWidgets/qstyle.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtWidgets/qtabbar.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtWidgets/qrubberband.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qabstractitemmodel.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\main.o ..\..\main.cpp
 
 release/mainwindow.o: ../../mainwindow.cpp ../../mainwindow.h \
@@ -2440,7 +2678,20 @@ release/mainwindow.o: ../../mainwindow.cpp ../../mainwindow.h \
 		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtWidgets/qabstractbutton.h \
 		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtWidgets/QVBoxLayout \
 		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtWidgets/QWidget \
-		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtGui/QPixmap
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtGui/QPixmap \
+		../../grapheditorsecwindow.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtWidgets/QDialog \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtWidgets/qdialog.h \
+		../../searchscene.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/Qfile \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qfile.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qfiledevice.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/QTextStream \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/QVector \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qvector.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/QPair \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtWidgets/QStackedWidget \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtWidgets/qstackedwidget.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\mainwindow.o ..\..\mainwindow.cpp
 
 release/newedgeinput.o: ../../newedgeinput.cpp ../../newedgeinput.h \
@@ -2829,8 +3080,506 @@ release/searchscene.o: ../../searchscene.cpp ../../searchscene.h \
 		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qvector.h \
 		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/QMap \
 		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/QPair \
-		../../adjgraph.h
+		../../adjgraph.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtWidgets/QStackedWidget \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtWidgets/qstackedwidget.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtWidgets/qframe.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtWidgets/qwidget.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtGui/qaction.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtGui/qkeysequence.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtGui/qicon.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtGui/qpalette.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtGui/qbrush.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtGui/qfont.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qendian.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtGui/qfontmetrics.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtGui/qfontinfo.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtWidgets/qsizepolicy.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtGui/qevent.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qurl.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtGui/qeventpoint.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtGui/qvector2d.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtGui/qvectornd.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtGui/qpointingdevice.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtGui/qinputdevice.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtGui/qscreen.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/QList \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/QObject \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/QRect \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/QSize \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/QSizeF \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtGui/QTransform \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtGui/qscreen_platform.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\searchscene.o ..\..\searchscene.cpp
+
+release/breadthfirstsearch.o: ../../breadthfirstsearch.cpp ../../breadthfirstsearch.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/Qstring \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qstring.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qchar.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qglobal.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qtversionchecks.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qtconfiginclude.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qconfig.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qtcore-config.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qtconfigmacros.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qtcoreexports.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qcompilerdetection.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qsystemdetection.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qprocessordetection.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qtdeprecationmarkers.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qtpreprocessorsupport.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qassert.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qtnoop.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qtypes.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qtversion.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qtclasshelpermacros.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qtypeinfo.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qcontainerfwd.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qsysinfo.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qlogging.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qflags.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qcompare_impl.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qatomic.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qbasicatomic.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qatomic_cxx11.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qgenericatomic.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qyieldcpu.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qconstructormacros.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qdarwinhelpers.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qexceptionhandling.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qforeach.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qttypetraits.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qfunctionpointer.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qglobalstatic.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qmalloc.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qminmax.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qnumeric.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qoverload.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qswap.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qtenvironmentvariables.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qtresource.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qttranslation.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qversiontagging.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qstringview.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qbytearray.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qrefcount.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qnamespace.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qtmetamacros.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qarraydata.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qpair.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qarraydatapointer.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qarraydataops.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qcontainertools_impl.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qxptype_traits.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/q20functional.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/q20memory.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qbytearrayalgorithms.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qbytearrayview.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qstringfwd.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/q20type_traits.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qstringliteral.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qstringalgorithms.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qlatin1stringview.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qanystringview.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qutf8stringview.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qstringtokenizer.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qstringbuilder.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qstringconverter.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qstringconverter_base.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/QMap \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qmap.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qiterator.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qlist.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qhashfunctions.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qbytearraylist.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qstringlist.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qalgorithms.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qstringmatcher.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qshareddata.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qshareddata_impl.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/QList \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/QPair \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/QMultiMap \
+		../../adjgraph.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/QVector \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qvector.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/QQueue \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qqueue.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/QDebug \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qdebug.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qtextstream.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qiodevicebase.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qscopedpointer.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qcontiguouscache.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qsharedpointer.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qsharedpointer_impl.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qmetatype.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qcompare.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qcomparehelpers.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qdatastream.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qfloat16.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qmath.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qiterable.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qmetacontainer.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qcontainerinfo.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qtaggedpointer.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qobjectdefs.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qobjectdefs_impl.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qfunctionaltools_impl.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qscopeguard.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qset.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qhash.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qvarlengtharray.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\breadthfirstsearch.o ..\..\breadthfirstsearch.cpp
+
+release/depthfirstsearch.o: ../../depthfirstsearch.cpp ../../depthfirstsearch.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/Qstring \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qstring.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qchar.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qglobal.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qtversionchecks.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qtconfiginclude.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qconfig.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qtcore-config.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qtconfigmacros.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qtcoreexports.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qcompilerdetection.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qsystemdetection.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qprocessordetection.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qtdeprecationmarkers.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qtpreprocessorsupport.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qassert.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qtnoop.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qtypes.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qtversion.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qtclasshelpermacros.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qtypeinfo.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qcontainerfwd.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qsysinfo.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qlogging.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qflags.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qcompare_impl.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qatomic.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qbasicatomic.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qatomic_cxx11.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qgenericatomic.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qyieldcpu.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qconstructormacros.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qdarwinhelpers.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qexceptionhandling.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qforeach.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qttypetraits.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qfunctionpointer.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qglobalstatic.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qmalloc.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qminmax.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qnumeric.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qoverload.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qswap.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qtenvironmentvariables.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qtresource.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qttranslation.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qversiontagging.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qstringview.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qbytearray.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qrefcount.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qnamespace.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qtmetamacros.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qarraydata.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qpair.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qarraydatapointer.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qarraydataops.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qcontainertools_impl.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qxptype_traits.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/q20functional.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/q20memory.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qbytearrayalgorithms.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qbytearrayview.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qstringfwd.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/q20type_traits.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qstringliteral.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qstringalgorithms.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qlatin1stringview.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qanystringview.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qutf8stringview.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qstringtokenizer.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qstringbuilder.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qstringconverter.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qstringconverter_base.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/QMap \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qmap.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qiterator.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qlist.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qhashfunctions.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qbytearraylist.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qstringlist.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qalgorithms.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qstringmatcher.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qshareddata.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qshareddata_impl.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/QList \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/QPair \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/QMultiMap \
+		../../adjgraph.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/QVector \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qvector.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/QDebug \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qdebug.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qtextstream.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qiodevicebase.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qscopedpointer.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qcontiguouscache.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qsharedpointer.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qsharedpointer_impl.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qmetatype.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qcompare.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qcomparehelpers.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qdatastream.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qfloat16.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qmath.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qiterable.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qmetacontainer.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qcontainerinfo.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qtaggedpointer.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qobjectdefs.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qobjectdefs_impl.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qfunctionaltools_impl.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qscopeguard.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qset.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qhash.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qvarlengtharray.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\depthfirstsearch.o ..\..\depthfirstsearch.cpp
+
+release/validtripsscene.o: ../../validtripsscene.cpp ../../validtripsscene.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/QString \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qstring.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qchar.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qglobal.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qtversionchecks.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qtconfiginclude.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qconfig.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qtcore-config.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qtconfigmacros.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qtcoreexports.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qcompilerdetection.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qsystemdetection.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qprocessordetection.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qtdeprecationmarkers.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qtpreprocessorsupport.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qassert.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qtnoop.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qtypes.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qtversion.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qtclasshelpermacros.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qtypeinfo.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qcontainerfwd.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qsysinfo.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qlogging.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qflags.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qcompare_impl.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qatomic.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qbasicatomic.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qatomic_cxx11.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qgenericatomic.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qyieldcpu.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qconstructormacros.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qdarwinhelpers.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qexceptionhandling.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qforeach.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qttypetraits.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qfunctionpointer.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qglobalstatic.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qmalloc.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qminmax.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qnumeric.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qoverload.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qswap.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qtenvironmentvariables.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qtresource.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qttranslation.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qversiontagging.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qstringview.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qbytearray.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qrefcount.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qnamespace.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qtmetamacros.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qarraydata.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qpair.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qarraydatapointer.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qarraydataops.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qcontainertools_impl.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qxptype_traits.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/q20functional.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/q20memory.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qbytearrayalgorithms.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qbytearrayview.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qstringfwd.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/q20type_traits.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qstringliteral.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qstringalgorithms.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qlatin1stringview.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qanystringview.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qutf8stringview.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qstringtokenizer.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qstringbuilder.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qstringconverter.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qstringconverter_base.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/QMap \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qmap.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qiterator.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qlist.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qhashfunctions.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qbytearraylist.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qstringlist.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qalgorithms.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qstringmatcher.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qshareddata.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qshareddata_impl.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/QVector \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qvector.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/QPair \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/QMultiMap \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/QDebug \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qdebug.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qtextstream.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qiodevicebase.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qscopedpointer.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qcontiguouscache.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qsharedpointer.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qsharedpointer_impl.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qmetatype.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qcompare.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qcomparehelpers.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qdatastream.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qfloat16.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qmath.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qiterable.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qmetacontainer.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qcontainerinfo.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qtaggedpointer.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qobjectdefs.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qobjectdefs_impl.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qfunctionaltools_impl.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qscopeguard.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qset.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qhash.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qvarlengtharray.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtWidgets/QWidget \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtWidgets/qwidget.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtWidgets/qtwidgetsglobal.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtGui/qtguiglobal.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtGui/qtgui-config.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtGui/qtguiexports.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtWidgets/qtwidgets-config.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtWidgets/qtwidgetsexports.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtGui/qwindowdefs.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtGui/qwindowdefs_win.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qobject.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qcoreevent.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qobject_impl.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qbindingstorage.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qmargins.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/q23utility.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtGui/qaction.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtGui/qkeysequence.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtGui/qicon.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qsize.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtGui/qpixmap.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtGui/qpaintdevice.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qrect.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qpoint.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtGui/qcolor.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtGui/qrgb.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtGui/qrgba64.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtGui/qimage.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtGui/qpixelformat.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtGui/qtransform.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtGui/qpolygon.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtGui/qregion.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qline.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qvariant.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtGui/qpalette.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtGui/qbrush.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtGui/qfont.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qendian.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtGui/qfontmetrics.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtGui/qfontinfo.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtWidgets/qsizepolicy.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtGui/qcursor.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtGui/qbitmap.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtGui/qevent.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qiodevice.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qurl.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtGui/qeventpoint.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtGui/qvector2d.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtGui/qvectornd.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtGui/qpointingdevice.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtGui/qinputdevice.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtGui/qscreen.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/QList \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/QObject \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/QRect \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/QSize \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/QSizeF \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtGui/QTransform \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qnativeinterface.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtGui/qscreen_platform.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtGui/qguiapplication.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qcoreapplication.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qdeadlinetimer.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qelapsedtimer.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qeventloop.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qcoreapplication_platform.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qfuture.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qfutureinterface.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qmutex.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qtsan_impl.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qresultstore.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qfuture_impl.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qthreadpool.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qthread.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qrunnable.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qexception.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qpromise.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtGui/qinputmethod.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/qlocale.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtGui/qguiapplication_platform.h \
+		../../adjgraph.h \
+		ui_validtripsscene.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/QVariant \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtWidgets/QApplication \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtWidgets/qapplication.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtWidgets/QFrame \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtWidgets/qframe.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtWidgets/QGridLayout \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtWidgets/qgridlayout.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtWidgets/qlayout.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtWidgets/qlayoutitem.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtWidgets/qboxlayout.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtWidgets/QHBoxLayout \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtWidgets/QLabel \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtWidgets/qlabel.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtGui/qpicture.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtGui/qtextdocument.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtWidgets/QPushButton \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtWidgets/qpushbutton.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtWidgets/qabstractbutton.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtWidgets/QScrollArea \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtWidgets/qscrollarea.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtWidgets/qabstractscrollarea.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtWidgets/QSpacerItem \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtWidgets/QVBoxLayout \
+		../../depthfirstsearch.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtCore/Qstring \
+		../../breadthfirstsearch.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtWidgets/QGroupBox \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtWidgets/qgroupbox.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtWidgets/QGraphicsWidget \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtWidgets/qgraphicswidget.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtWidgets/qgraphicslayoutitem.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtWidgets/qgraphicsitem.h \
+		D:/Apps/CUTIE/6.7.0/mingw_64/include/QtGui/qpainterpath.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\validtripsscene.o ..\..\validtripsscene.cpp
 
 release/qrc_icons.o: release/qrc_icons.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\qrc_icons.o release\qrc_icons.cpp
@@ -2849,6 +3598,9 @@ release/moc_mainwindow.o: release/moc_mainwindow.cpp
 
 release/moc_newedgeinput.o: release/moc_newedgeinput.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\moc_newedgeinput.o release\moc_newedgeinput.cpp
+
+release/moc_validtripsscene.o: release/moc_validtripsscene.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\moc_validtripsscene.o release\moc_validtripsscene.cpp
 
 ####### Install
 

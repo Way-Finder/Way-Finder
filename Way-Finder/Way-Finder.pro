@@ -17,7 +17,11 @@ SOURCES += \
     main.cpp \
     mainwindow.cpp \
     newedgeinput.cpp \
-    searchscene.cpp
+    searchscene.cpp \
+    breadthfirstsearch.cpp \
+    depthfirstsearch.cpp \
+    validtripsscene.cpp
+
 
 HEADERS += \
     addedge.h \
@@ -26,14 +30,19 @@ HEADERS += \
     grapheditorsecwindow.h \
     mainwindow.h \
     newedgeinput.h \
-    searchscene.h
+    searchscene.h \
+    depthfirstsearch.h \
+    breadthfirstsearch.h \
+    depthfirstsearch.h \
+    validtripsscene.h
 
 FORMS += \
     editedge.ui \
     grapheditor.ui \
     grapheditorsecwindow.ui \
     mainwindow.ui \
-    newedgeinput.ui
+    newedgeinput.ui \
+    validtripsscene.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
