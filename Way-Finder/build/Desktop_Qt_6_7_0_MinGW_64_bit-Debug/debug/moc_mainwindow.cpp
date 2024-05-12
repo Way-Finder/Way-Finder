@@ -45,8 +45,7 @@ constexpr auto qt_meta_stringdata_CLASSMainWindowENDCLASS = QtMocHelpers::string
     "on_pushButton_pressed",
     "on_DEFES_clicked",
     "on_BEFES_clicked",
-    "readFiles",
-    "adjmap*"
+    "on_destcity_currentTextChanged"
 );
 #else  // !QT_MOC_HAS_STRINGDATA
 #error "qtmochelpers.h not found or too old."
@@ -59,7 +58,7 @@ Q_CONSTINIT static const uint qt_meta_data_CLASSMainWindowENDCLASS[] = {
       12,       // revision
        0,       // classname
        0,    0, // classinfo
-      10,   14, // methods
+       9,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -67,18 +66,17 @@ Q_CONSTINIT static const uint qt_meta_data_CLASSMainWindowENDCLASS[] = {
        2,       // signalCount
 
  // signals: name, argc, parameters, tag, flags, initial metatype offsets
-       1,    1,   74,    2, 0x06,    1 /* Public */,
-       1,    0,   77,    2, 0x26,    3 /* Public | MethodCloned */,
+       1,    1,   68,    2, 0x06,    1 /* Public */,
+       1,    0,   71,    2, 0x26,    3 /* Public | MethodCloned */,
 
  // slots: name, argc, parameters, tag, flags, initial metatype offsets
-       4,    1,   78,    2, 0x08,    4 /* Private */,
-       4,    0,   81,    2, 0x28,    6 /* Private | MethodCloned */,
-       5,    1,   82,    2, 0x08,    7 /* Private */,
-       7,    0,   85,    2, 0x08,    9 /* Private */,
-       8,    0,   86,    2, 0x08,   10 /* Private */,
-       9,    0,   87,    2, 0x08,   11 /* Private */,
-      10,    1,   88,    2, 0x08,   12 /* Private */,
-      10,    0,   91,    2, 0x28,   14 /* Private | MethodCloned */,
+       4,    1,   72,    2, 0x08,    4 /* Private */,
+       4,    0,   75,    2, 0x28,    6 /* Private | MethodCloned */,
+       5,    1,   76,    2, 0x08,    7 /* Private */,
+       7,    0,   79,    2, 0x08,    9 /* Private */,
+       8,    0,   80,    2, 0x08,   10 /* Private */,
+       9,    0,   81,    2, 0x08,   11 /* Private */,
+      10,    1,   82,    2, 0x08,   12 /* Private */,
 
  // signals: parameters
     QMetaType::Void, QMetaType::QString,    3,
@@ -91,8 +89,7 @@ Q_CONSTINIT static const uint qt_meta_data_CLASSMainWindowENDCLASS[] = {
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
-    0x80000000 | 11, QMetaType::QString,    3,
-    0x80000000 | 11,
+    QMetaType::Void, QMetaType::QString,    6,
 
        0        // eod
 };
@@ -125,11 +122,9 @@ Q_CONSTINIT const QMetaObject MainWindow::staticMetaObject = { {
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
         // method 'on_BEFES_clicked'
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
-        // method 'readFiles'
-        QtPrivate::TypeAndForceComplete<adjmap *, std::false_type>,
-        QtPrivate::TypeAndForceComplete<const QString &, std::false_type>,
-        // method 'readFiles'
-        QtPrivate::TypeAndForceComplete<adjmap *, std::false_type>
+        // method 'on_destcity_currentTextChanged'
+        QtPrivate::TypeAndForceComplete<void, std::false_type>,
+        QtPrivate::TypeAndForceComplete<const QString &, std::false_type>
     >,
     nullptr
 } };
@@ -148,10 +143,7 @@ void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         case 5: _t->on_pushButton_pressed(); break;
         case 6: _t->on_DEFES_clicked(); break;
         case 7: _t->on_BEFES_clicked(); break;
-        case 8: { adjmap* _r = _t->readFiles((*reinterpret_cast< std::add_pointer_t<QString>>(_a[1])));
-            if (_a[0]) *reinterpret_cast< adjmap**>(_a[0]) = std::move(_r); }  break;
-        case 9: { adjmap* _r = _t->readFiles();
-            if (_a[0]) *reinterpret_cast< adjmap**>(_a[0]) = std::move(_r); }  break;
+        case 8: _t->on_destcity_currentTextChanged((*reinterpret_cast< std::add_pointer_t<QString>>(_a[1]))); break;
         default: ;
         }
     } else if (_c == QMetaObject::IndexOfMethod) {
@@ -185,13 +177,13 @@ int MainWindow::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 10)
+        if (_id < 9)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 10;
+        _id -= 9;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 10)
+        if (_id < 9)
             *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType();
-        _id -= 10;
+        _id -= 9;
     }
     return _id;
 }

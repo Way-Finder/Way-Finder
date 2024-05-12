@@ -32,15 +32,15 @@ public:
     QGroupBox *groupBox;
     QWidget *layoutWidget1;
     QVBoxLayout *verticalLayout;
-    QWidget *widget;
+    QWidget *destination;
     QHBoxLayout *horizontalLayout;
     QLabel *label;
     QComboBox *depcity;
-    QWidget *widget1;
+    QWidget *arrival;
     QHBoxLayout *horizontalLayout_2;
     QLabel *label_2;
     QComboBox *destcity;
-    QWidget *test;
+    QWidget *price;
     QHBoxLayout *horizontalLayout_3;
     QLabel *label_3;
     QLabel *label_4;
@@ -79,17 +79,17 @@ public:
         verticalLayout = new QVBoxLayout(layoutWidget1);
         verticalLayout->setObjectName("verticalLayout");
         verticalLayout->setContentsMargins(0, 0, 0, 0);
-        widget = new QWidget(layoutWidget1);
-        widget->setObjectName("widget");
-        horizontalLayout = new QHBoxLayout(widget);
+        destination = new QWidget(layoutWidget1);
+        destination->setObjectName("destination");
+        horizontalLayout = new QHBoxLayout(destination);
         horizontalLayout->setObjectName("horizontalLayout");
-        label = new QLabel(widget);
+        label = new QLabel(destination);
         label->setObjectName("label");
         label->setStyleSheet(QString::fromUtf8("color: rgb(0, 0, 0);"));
 
         horizontalLayout->addWidget(label);
 
-        depcity = new QComboBox(widget);
+        depcity = new QComboBox(destination);
         depcity->setObjectName("depcity");
         depcity->setStyleSheet(QString::fromUtf8("\n"
 "  color: black;\n"
@@ -101,19 +101,19 @@ public:
         horizontalLayout->addWidget(depcity);
 
 
-        verticalLayout->addWidget(widget);
+        verticalLayout->addWidget(destination);
 
-        widget1 = new QWidget(layoutWidget1);
-        widget1->setObjectName("widget1");
-        horizontalLayout_2 = new QHBoxLayout(widget1);
+        arrival = new QWidget(layoutWidget1);
+        arrival->setObjectName("arrival");
+        horizontalLayout_2 = new QHBoxLayout(arrival);
         horizontalLayout_2->setObjectName("horizontalLayout_2");
-        label_2 = new QLabel(widget1);
+        label_2 = new QLabel(arrival);
         label_2->setObjectName("label_2");
         label_2->setStyleSheet(QString::fromUtf8("color: rgb(0, 0, 0);"));
 
         horizontalLayout_2->addWidget(label_2);
 
-        destcity = new QComboBox(widget1);
+        destcity = new QComboBox(arrival);
         destcity->setObjectName("destcity");
         destcity->setStyleSheet(QString::fromUtf8("\n"
 "  color: black;\n"
@@ -125,25 +125,25 @@ public:
         horizontalLayout_2->addWidget(destcity);
 
 
-        verticalLayout->addWidget(widget1);
+        verticalLayout->addWidget(arrival);
 
-        test = new QWidget(layoutWidget1);
-        test->setObjectName("test");
-        horizontalLayout_3 = new QHBoxLayout(test);
+        price = new QWidget(layoutWidget1);
+        price->setObjectName("price");
+        horizontalLayout_3 = new QHBoxLayout(price);
         horizontalLayout_3->setObjectName("horizontalLayout_3");
-        label_3 = new QLabel(test);
+        label_3 = new QLabel(price);
         label_3->setObjectName("label_3");
         label_3->setStyleSheet(QString::fromUtf8("color: rgb(0, 0, 0);"));
 
         horizontalLayout_3->addWidget(label_3);
 
-        label_4 = new QLabel(test);
+        label_4 = new QLabel(price);
         label_4->setObjectName("label_4");
         label_4->setMinimumSize(QSize(152, 0));
 
         horizontalLayout_3->addWidget(label_4);
 
-        pricein = new QLineEdit(test);
+        pricein = new QLineEdit(price);
         pricein->setObjectName("pricein");
         pricein->setStyleSheet(QString::fromUtf8("\n"
 "  color: black;\n"
@@ -155,7 +155,7 @@ public:
         horizontalLayout_3->addWidget(pricein);
 
 
-        verticalLayout->addWidget(test);
+        verticalLayout->addWidget(price);
 
         label_5 = new QLabel(groupBox);
         label_5->setObjectName("label_5");
