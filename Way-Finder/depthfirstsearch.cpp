@@ -124,6 +124,33 @@ QMultiMap<int, QVector<QPair<QString, Connection>>> DepthFirstSearch::getValidPa
     return validTrips;
 }
 
+void DepthFirstSearch::Connectivity(QString source,adjmap *graph)
+{
+   // qDebug()<<source<<"\n";
+    this->mVisited[source] = 1; // Marking visited to prevent infinite loop
+
+    for(auto it1 = (*graph)[source].begin(); it1 != (*graph)[source].end(); ++it1) // # 1
+    {
+        if(!mVisited[it1.key()] && !it1.value().isEmpty())
+            Connectivity(it1.key(),graph);
+
+    }
+
+
+}
+
+bool DepthFirstSearch::isConnected(QString source,adjmap *graph)
+{
+    Connectivity(source,graph);
+
+    for (auto i=graph->begin();i!=graph->end();i++) {
+        if(!mVisited[i.key()])
+            return false;
+    }
+    return true;
+
+}
+
 
 // Returns the trips plan.
 QString DepthFirstSearch::getPlan()

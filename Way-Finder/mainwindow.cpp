@@ -47,6 +47,25 @@ void MainWindow::start()
 
 void MainWindow::uploadFiles(const QString& filename)
 {
+    for (auto outerIt = madj->begin(); outerIt != madj->end(); ++outerIt) {
+        // Iterate over the inner map (keys are QString, values are QList<Connection>)
+        QMap<QString, QList<Connection>>& innerMap = outerIt.value();
+        for (auto innerIt = innerMap.begin(); innerIt != innerMap.end(); ++innerIt) {
+            // Check if the QList is empty
+            if (innerIt.value().isEmpty()) {
+                // Remove the inner key (empty QList)
+                innerMap.erase(innerIt);
+
+                // Check if the inner map is now empty
+                if (innerMap.isEmpty()) {
+                    // Remove the outer key if the inner map became empty
+                    madj->erase(outerIt);
+                    break; // Break out of the inner loop to avoid unnecessary iterations
+                }
+            }
+        }
+    }
+
     QFile file(filename);
     if (!file.open(QIODevice::WriteOnly | QIODevice::Text)) {
         qCritical() << file.errorString();

@@ -21,6 +21,9 @@ public:
     void findMyWay(adjmap *graph);
     QList<QVector<QPair<QString,Connection>>> getListOfPaths();
     QMultiMap<int,QVector<QPair<QString,Connection>>> getValidPaths();
+    void Connectivity(QString source,adjmap *adj);
+    bool isConnected(QString source,adjmap *graph);
+
     QString getPlan();
 };
 

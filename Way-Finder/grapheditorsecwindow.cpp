@@ -9,6 +9,7 @@
 #include <newedgeinput.h>
 #include <QLineEdit>
 #include <mainwindow.h>
+#include <depthfirstsearch.h>
 
 GraphEditorSecWindow::GraphEditorSecWindow(adjmap *adj, QWidget *parent)
     : QWidget(parent),
@@ -19,12 +20,10 @@ GraphEditorSecWindow::GraphEditorSecWindow(adjmap *adj, QWidget *parent)
 
     this->adj = adj;
 
-
     for (auto it = this->adj->begin(); it != this->adj->end(); ++it) {
         ui->city1Combo->addItem(it.key());
         ui->city2Combo->addItem(it.key());
     }
-    ui->numEdges->setText(QString::number((*this->adj)[city1][city2].size()));
 
     city1=ui->city1Combo->currentText();
     city2=ui->city2Combo->currentText();
@@ -36,9 +35,7 @@ GraphEditorSecWindow::GraphEditorSecWindow(adjmap *adj, QWidget *parent)
     connect(ui->city2Combo,&QComboBox::activated,this,&GraphEditorSecWindow::selectCity2);
     connect(ui->mainPageButton,&QPushButton::clicked,this,&GraphEditorSecWindow::backToMainPage);
 
-
     loadEdges();
-
 }
 
 GraphEditorSecWindow::~GraphEditorSecWindow()
@@ -69,6 +66,7 @@ void GraphEditorSecWindow::removeGroupBoxes()
 
 void GraphEditorSecWindow::loadEdges()
 {
+    if(city1==city2)return;
     removeGroupBoxes();
 
     int cnt=1;
@@ -92,10 +90,6 @@ void GraphEditorSecWindow::loadEdges()
 void GraphEditorSecWindow::deleteEdge()
 {
 
-    if(ui->numEdges->text()=="1"){
-        QMessageBox::warning(this,"Warning!","Last edge cannot be deleted!");
-        return ;
-    }
     QPushButton* buttonSender = qobject_cast<QPushButton*>(sender()); // retrieve the button you have clicked;
 
     QString oldVehicle,oldCost;
@@ -117,6 +111,7 @@ void GraphEditorSecWindow::deleteEdge()
 
 void GraphEditorSecWindow::addEdgeButton()
 {
+    if(city1==city2)return;
     NewEdgeInput newEdge;
     newEdge.exec();
 
@@ -178,12 +173,14 @@ void GraphEditorSecWindow::editEdge()
 
 void GraphEditorSecWindow::sortCostAscending()
 {
+    if(city1==city2)return;
     std::sort((*adj)[city1][city2].begin(),(*adj)[city1][city2].end());
     loadEdges();
 }
 
 void GraphEditorSecWindow::sortCostDescending()
 {
+    if(city1==city2)return;
     std::sort((*adj)[city1][city2].begin(),(*adj)[city1][city2].end(),std::greater<Connection>());
     loadEdges();
 }
@@ -405,12 +402,13 @@ void GraphEditorSecWindow::addGroupBox(QString vehicle,int cost,int edgeInd)
 
 void GraphEditorSecWindow::removeEdge(const QString &vehicle, int cost, adjmap *adj)
 {
+
+    if(city1==city2)return;
     qDebug() << "Removing edge: Vehicle =" << vehicle << ", Cost =" << cost;
 
     for(QList<Connection>::Iterator it=(*adj)[city1][city2].begin();it!=(*adj)[city1][city2].end();it++){
         if(it->vehicle == vehicle && it->cost == cost){
             (*adj)[city1][city2].erase(it);
-            qDebug()<<"Done Deletion\n";
             break;
         }
     }
@@ -418,9 +416,21 @@ void GraphEditorSecWindow::removeEdge(const QString &vehicle, int cost, adjmap *
     for(QList<Connection>::Iterator it=(*adj)[city2][city1].begin();it!=(*adj)[city2][city1].end();it++){
         if(it->vehicle == vehicle && it->cost == cost){
             (*adj)[city2][city1].erase(it);
-            qDebug()<<"Done Deletion\n";
             break;
         }
+    }
+
+    DepthFirstSearch isConnected(adj->begin().key(),"",0);
+    qDebug()<<adj->begin().key()<<"\n";
+    if(isConnected.isConnected(adj->begin().key(),adj)){
+        qDebug()<<"deleted\n";
+    }else {
+        Connection oldConnection;
+        oldConnection.vehicle=vehicle;
+        oldConnection.cost=cost;
+        (*adj)[city1][city2].append(oldConnection);
+        (*adj)[city2][city1].append(oldConnection);
+        qDebug()<<"cant be deleted\n";
     }
 
 }
