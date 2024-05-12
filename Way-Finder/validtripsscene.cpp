@@ -1,6 +1,5 @@
 #include "validtripsscene.h"
 #include "mainwindow.h"
-#include "searchscene.h"
 #include "ui_validtripsscene.h"
 #include "depthfirstsearch.h"
 #include "breadthfirstsearch.h"
@@ -15,10 +14,11 @@
 #include <QDebug>
 #include <QWidget>
 #include <adjgraph.h>
-ValidTripsScene::ValidTripsScene(const QString& departureCity,const QString& arrivalCity,bool traversingDFS,int budget,adjmap adj,QWidget *parent)
+ValidTripsScene::ValidTripsScene(const QString& departureCity,const QString& arrivalCity,bool traversingDFS,int budget,adjmap *adj,QWidget *parent)
     : QWidget(parent)
     ,departureCity(departureCity)
     ,arrivalCity(arrivalCity)
+    , madj(adj)
     , ui(new Ui::ValidTripsScene)
 {
     ui->setupUi(this);
@@ -28,13 +28,13 @@ ValidTripsScene::ValidTripsScene(const QString& departureCity,const QString& arr
     if(traversingDFS)
     {
         DepthFirstSearch navigator(departureCity,arrivalCity,budget);
-        navigator.findMyWay(adj);
+        navigator.findMyWay(madj);
         validTrips = navigator.getValidPaths();
     }
     else
     {
         BreadthFirstSearch navigator;
-        validTrips=navigator.BFS(departureCity,arrivalCity,budget,adj);
+        validTrips=navigator.BFS(departureCity,arrivalCity,budget,madj);
     }
     int i = 0;
     //QMultiMap<int, QVector<QPair<QString, Connection>>>
@@ -110,9 +110,8 @@ ValidTripsScene::~ValidTripsScene()
 
 void ValidTripsScene::on_toHomeScreenButton_clicked()
 {
-    SearchScene searchscene;
-    searchscene.readfile("TransportationMap.txt");
-    auto window = new MainWindow(searchscene.getAdjMap());
+    auto window = new MainWindow(madj);
+    window->setAttribute(Qt::WA_DeleteOnClose);
     window->show();
     close();
 }

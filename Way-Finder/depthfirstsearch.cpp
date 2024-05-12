@@ -45,10 +45,10 @@ The algorithm consists of the following functionality:
 6. We unmark the previous node so we try a different combination.
 7. We pop our last transportation to try a different one.
 */
-void DepthFirstSearch::traverse(QString source, QVector<QPair<QString, Connection>> path, adjmap& graph)
+void DepthFirstSearch::traverse(QString source, QVector<QPair<QString, Connection>> path, adjmap *graph)
 {
     this->mVisited[source] = 1; // Marking visited to prevent infinite loop
-    for(auto it1 = graph[source].begin(); it1 != graph[source].end(); ++it1) // # 1
+    for(auto it1 = (*graph)[source].begin(); it1 != (*graph)[source].end(); ++it1) // # 1
     {
         if(mVisited[it1.key()]) // Checking for visited again to prevent adding shared paths again.
         {
@@ -94,7 +94,7 @@ int DepthFirstSearch::isValidTrip(QVector<QPair<QString, Connection> > trip)
 
 
 // Public function for the user.
-void DepthFirstSearch::findMyWay(adjmap &graph)
+void DepthFirstSearch::findMyWay(adjmap *graph)
 {
     QVector<QPair<QString, Connection>> tempPath;
     traverse(this->source, tempPath, graph);

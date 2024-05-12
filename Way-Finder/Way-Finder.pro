@@ -12,12 +12,10 @@ CONFIG += c++17
 SOURCES += \
     addedge.cpp \
     editedge.cpp \
-    grapheditor.cpp \
     grapheditorsecwindow.cpp \
     main.cpp \
     mainwindow.cpp \
     newedgeinput.cpp \
-    searchscene.cpp \
     breadthfirstsearch.cpp \
     depthfirstsearch.cpp \
     validtripsscene.cpp
@@ -26,11 +24,9 @@ SOURCES += \
 HEADERS += \
     addedge.h \
     editedge.h \
-    grapheditor.h \
     grapheditorsecwindow.h \
     mainwindow.h \
     newedgeinput.h \
-    searchscene.h \
     depthfirstsearch.h \
     breadthfirstsearch.h \
     depthfirstsearch.h \
@@ -38,7 +34,6 @@ HEADERS += \
 
 FORMS += \
     editedge.ui \
-    grapheditor.ui \
     grapheditorsecwindow.ui \
     mainwindow.ui \
     newedgeinput.ui \

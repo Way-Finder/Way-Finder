@@ -1,6 +1,7 @@
-5
-Asyut - BeniSuef Test 235
-BeniSuef - Cairo BUS 108
-Cairo - Asyut Train 250 Bus 450 Uber 900
-Dahab - BeniSuef Microbus 200 Bus 315
-Giza - Cairo Metro 354 Uber 10 Taxi 461 Car 3415
+6
+ - 
+Asyut - Asyut
+BeniSuef - Asyut Test 235
+Cairo - 
+Dahab - Asyut
+Giza - Cairo Metro 354 Uber 10 Taxi 461 CAR 100 test 213333

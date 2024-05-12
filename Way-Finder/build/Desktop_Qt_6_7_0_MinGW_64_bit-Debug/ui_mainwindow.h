@@ -32,12 +32,15 @@ public:
     QGroupBox *groupBox;
     QWidget *layoutWidget1;
     QVBoxLayout *verticalLayout;
+    QWidget *widget;
     QHBoxLayout *horizontalLayout;
     QLabel *label;
     QComboBox *depcity;
+    QWidget *widget1;
     QHBoxLayout *horizontalLayout_2;
     QLabel *label_2;
     QComboBox *destcity;
+    QWidget *test;
     QHBoxLayout *horizontalLayout_3;
     QLabel *label_3;
     QLabel *label_4;
@@ -76,15 +79,17 @@ public:
         verticalLayout = new QVBoxLayout(layoutWidget1);
         verticalLayout->setObjectName("verticalLayout");
         verticalLayout->setContentsMargins(0, 0, 0, 0);
-        horizontalLayout = new QHBoxLayout();
+        widget = new QWidget(layoutWidget1);
+        widget->setObjectName("widget");
+        horizontalLayout = new QHBoxLayout(widget);
         horizontalLayout->setObjectName("horizontalLayout");
-        label = new QLabel(layoutWidget1);
+        label = new QLabel(widget);
         label->setObjectName("label");
         label->setStyleSheet(QString::fromUtf8("color: rgb(0, 0, 0);"));
 
         horizontalLayout->addWidget(label);
 
-        depcity = new QComboBox(layoutWidget1);
+        depcity = new QComboBox(widget);
         depcity->setObjectName("depcity");
         depcity->setStyleSheet(QString::fromUtf8("\n"
 "  color: black;\n"
@@ -96,17 +101,19 @@ public:
         horizontalLayout->addWidget(depcity);
 
 
-        verticalLayout->addLayout(horizontalLayout);
+        verticalLayout->addWidget(widget);
 
-        horizontalLayout_2 = new QHBoxLayout();
+        widget1 = new QWidget(layoutWidget1);
+        widget1->setObjectName("widget1");
+        horizontalLayout_2 = new QHBoxLayout(widget1);
         horizontalLayout_2->setObjectName("horizontalLayout_2");
-        label_2 = new QLabel(layoutWidget1);
+        label_2 = new QLabel(widget1);
         label_2->setObjectName("label_2");
         label_2->setStyleSheet(QString::fromUtf8("color: rgb(0, 0, 0);"));
 
         horizontalLayout_2->addWidget(label_2);
 
-        destcity = new QComboBox(layoutWidget1);
+        destcity = new QComboBox(widget1);
         destcity->setObjectName("destcity");
         destcity->setStyleSheet(QString::fromUtf8("\n"
 "  color: black;\n"
@@ -118,23 +125,25 @@ public:
         horizontalLayout_2->addWidget(destcity);
 
 
-        verticalLayout->addLayout(horizontalLayout_2);
+        verticalLayout->addWidget(widget1);
 
-        horizontalLayout_3 = new QHBoxLayout();
+        test = new QWidget(layoutWidget1);
+        test->setObjectName("test");
+        horizontalLayout_3 = new QHBoxLayout(test);
         horizontalLayout_3->setObjectName("horizontalLayout_3");
-        label_3 = new QLabel(layoutWidget1);
+        label_3 = new QLabel(test);
         label_3->setObjectName("label_3");
         label_3->setStyleSheet(QString::fromUtf8("color: rgb(0, 0, 0);"));
 
         horizontalLayout_3->addWidget(label_3);
 
-        label_4 = new QLabel(layoutWidget1);
+        label_4 = new QLabel(test);
         label_4->setObjectName("label_4");
         label_4->setMinimumSize(QSize(152, 0));
 
         horizontalLayout_3->addWidget(label_4);
 
-        pricein = new QLineEdit(layoutWidget1);
+        pricein = new QLineEdit(test);
         pricein->setObjectName("pricein");
         pricein->setStyleSheet(QString::fromUtf8("\n"
 "  color: black;\n"
@@ -146,7 +155,7 @@ public:
         horizontalLayout_3->addWidget(pricein);
 
 
-        verticalLayout->addLayout(horizontalLayout_3);
+        verticalLayout->addWidget(test);
 
         label_5 = new QLabel(groupBox);
         label_5->setObjectName("label_5");
@@ -202,10 +211,14 @@ public:
         label_7->setStyleSheet(QString::fromUtf8("color: rgb(0, 0, 0);"));
         DFS_pic = new QLabel(groupBox_2);
         DFS_pic->setObjectName("DFS_pic");
-        DFS_pic->setGeometry(QRect(600, 10, 151, 121));
+        DFS_pic->setGeometry(QRect(600, 10, 151, 131));
+        DFS_pic->setPixmap(QPixmap(QString::fromUtf8(":/icons/icons/DFS.png")));
+        DFS_pic->setScaledContents(true);
         BFS_pic = new QLabel(groupBox_2);
         BFS_pic->setObjectName("BFS_pic");
-        BFS_pic->setGeometry(QRect(610, 140, 151, 141));
+        BFS_pic->setGeometry(QRect(610, 140, 141, 131));
+        BFS_pic->setPixmap(QPixmap(QString::fromUtf8(":/icons/icons/BFS.png")));
+        BFS_pic->setScaledContents(true);
 
         verticalLayout_2->addWidget(groupBox);
 
@@ -231,8 +244,8 @@ public:
         pushButton->setText(QCoreApplication::translate("MainWindow", "Edit Graph", nullptr));
         label_6->setText(QCoreApplication::translate("MainWindow", "Search By :", nullptr));
         label_7->setText(QCoreApplication::translate("MainWindow", "Search By :", nullptr));
-        DFS_pic->setText(QCoreApplication::translate("MainWindow", "TextLabel", nullptr));
-        BFS_pic->setText(QCoreApplication::translate("MainWindow", "TextLabel", nullptr));
+        DFS_pic->setText(QString());
+        BFS_pic->setText(QString());
     } // retranslateUi
 
 };

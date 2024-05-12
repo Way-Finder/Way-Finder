@@ -203,9 +203,9 @@ void GraphEditorSecWindow::selectCity2()
 void GraphEditorSecWindow::backToMainPage()
 {
     MainWindow *mainPage = new MainWindow(adj);
-    this->close();
     mainPage->setAttribute(Qt::WA_DeleteOnClose);
     mainPage->show();
+    this->close();
 }
 
 void GraphEditorSecWindow::addGroupBox(QString vehicle,int cost,int edgeInd)

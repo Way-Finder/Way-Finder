@@ -3,34 +3,102 @@
 #include <adjgraph.h>
 #include <QPixmap>
 #include <grapheditorsecwindow.h>
-#include <searchscene.h>
 #include <validtripsscene.h>
 #include <QStackedWidget>
+#include <QCloseEvent>
+#include <qfile.h>
 
 MainWindow::MainWindow(adjmap * adj,QWidget *parent)
     : QMainWindow(parent)
+    ,madj(adj)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
 
+    if(!adj)return ;
     for (auto it = adj->constBegin(); it != adj->constEnd(); ++it) {
         ui->depcity->addItem(it.key());
         ui->destcity->addItem(it.key());
     }
+
     ui->BEFES->setEnabled(false);
     ui->DEFES->setEnabled(false);
-
-    QPixmap defespic("D:/Cutie/Way-Finder/Way-Finder/Assets/DFS.png");
-    QPixmap befespic("D:/Cutie/Way-Finder/Way-Finder/Assets/BFS.png");
-
-    ui->DFS_pic->setPixmap(defespic);
-    ui->BFS_pic->setPixmap(befespic);
 
 }
 
 MainWindow::~MainWindow()
 {
+    emit exitApp();
     delete ui;
+}
+
+void MainWindow::start()
+{
+
+    madj=readFiles("TransportationMap.txt");
+
+    MainWindow *mainWindow = new MainWindow(madj);
+    mainWindow->setAttribute(Qt::WA_DeleteOnClose);
+    mainWindow->show();
+
+    connect(this, SIGNAL(exitApp(QString)), this , SLOT(uploadFiles(QString)));
+
+}
+
+void MainWindow::uploadFiles(const QString& filename)
+{
+    QFile file(filename);
+    if (!file.open(QIODevice::WriteOnly | QIODevice::Text)) {
+        qCritical() << file.errorString();
+        return;
+    }
+
+    QMap<QPair<QString,QString>,int> visited;
+    QTextStream stream(&file);
+    stream << madj->size() << '\n';
+
+
+    for (auto it = madj->begin(); it != madj->end(); ++it) {
+        const QString& city = it.key();
+
+
+        bool test = true;
+
+        for (auto jt = it.value().begin(); jt != it.value().end(); ++jt) {
+            const QString& destination = jt.key();
+            if(visited[{city,destination}]== 1){
+                continue;
+            }else{
+                visited[{city,destination}] = 1;
+                visited[{destination,city}] = 1;
+            }
+            if(test)
+            {
+                stream << city << " - ";
+                test = false;
+            }
+
+
+            stream << destination;
+
+
+            for (const auto& connection : jt.value()) {
+
+                stream << " " << connection.vehicle << " " << connection.cost;
+            }
+
+
+            break;
+        }
+        if(std::next(it) != madj->end())
+        {
+            stream << '\n';
+        }
+    }
+
+
+
+    file.close();
 }
 
 void MainWindow::on_pricein_textEdited(const QString &arg1)
@@ -50,24 +118,20 @@ void MainWindow::on_pricein_textEdited(const QString &arg1)
 
 void MainWindow::on_pushButton_pressed()
 {
-    SearchScene searchscene;
-    searchscene.readfile("TransportationMap.txt");
-    GraphEditorSecWindow *editEdgePage=new GraphEditorSecWindow(searchscene.getAdjMap());
-    this->close();
+    GraphEditorSecWindow *editEdgePage=new GraphEditorSecWindow(madj);
     editEdgePage->setAttribute(Qt::WA_DeleteOnClose);
     editEdgePage->show();
+    this->close();
 
 }
 
 void MainWindow::on_DEFES_clicked()
 {
-    SearchScene searchscene;
-    searchscene.readfile("TransportationMap.txt");
     QString deptartureCity = ui->depcity->currentText();
     QString destinationCity = ui->destcity->currentText();
     int budget = ui->pricein->displayText().toInt();
-    adjmap map = searchscene.adj;
-    auto newWindow = new ValidTripsScene(deptartureCity,destinationCity,true,budget,map);
+    auto newWindow = new ValidTripsScene(deptartureCity,destinationCity,true,budget,madj);
+    newWindow->setAttribute(Qt::WA_DeleteOnClose);
     newWindow->show();
     close();
 }
@@ -75,14 +139,48 @@ void MainWindow::on_DEFES_clicked()
 
 void MainWindow::on_BEFES_clicked()
 {
-    SearchScene searchscene;
-    searchscene.readfile("TransportationMap.txt");
     QString deptartureCity = ui->depcity->currentText();
     QString destinationCity = ui->destcity->currentText();
     int budget = ui->pricein->displayText().toInt();
-    adjmap map = searchscene.adj;
-    auto newWindow = new ValidTripsScene(deptartureCity,destinationCity,false,budget,map);
+    auto newWindow = new ValidTripsScene(deptartureCity,destinationCity,false,budget,madj);
+    newWindow->setAttribute(Qt::WA_DeleteOnClose);
     newWindow->show();
     close();
+}
+
+adjmap* MainWindow::readFiles(const QString& filename)
+{
+    adjmap *adj=new adjmap();
+    QFile file(filename);
+
+    if(!file.open(QIODevice::ReadOnly))
+    {
+        qCritical() << file.errorString();
+        return nullptr;
+    }
+
+    QTextStream stream(&file);
+    while(!stream.atEnd())
+    {
+        QString line = stream.readLine();
+        if(line.size() > 3)
+        {
+            QStringList parts = line.split(" ");
+            Connection tmper;
+            QString from = parts[0];
+            QString to = parts[2];
+            QList<Connection> transportation;
+            for(int i = 3; i < parts.size(); i += 2)
+            {
+                tmper.vehicle = parts[i];
+                tmper.cost = parts[i+1].toInt();
+                transportation.push_back(tmper);
+            }
+            (*adj)[from][to].append(transportation);
+            (*adj)[to][from].append(transportation);
+        }
+    }
+    file.close();
+    return adj;
 }
 

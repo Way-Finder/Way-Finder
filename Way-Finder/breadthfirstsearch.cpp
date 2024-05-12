@@ -62,13 +62,13 @@ void BreadthFirstSearch::insertCity(QMap<QString, QVector<Connection>>&children,
     }
 }
 
-QMultiMap<int,QVector<QPair<QString,Connection>>> BreadthFirstSearch::BFS(QString source,QString destination,int cost,adjmap adj)
+QMultiMap<int,QVector<QPair<QString,Connection>>> BreadthFirstSearch::BFS(QString source,QString destination,int cost,adjmap *adj)
 {
     QMultiMap<int,QVector<QPair<QString,Connection>>>validTrips;
 
     QQueue<QPair<int,QVector<QPair<QString,Connection>>>>paths;
 
-    QMap<QString, QVector<Connection>>children=adj[source];
+    QMap<QString, QVector<Connection>>children=(*adj)[source];
     insertFirstCity(children,paths,cost);
 
     while(!paths.empty())
@@ -83,7 +83,7 @@ QMultiMap<int,QVector<QPair<QString,Connection>>> BreadthFirstSearch::BFS(QStrin
             validTrips.insert(path.first,path.second);
             continue;
         }
-        QMap<QString, QVector<Connection>>children=adj[city];
+        QMap<QString, QVector<Connection>>children=(*adj)[city];
         insertCity(children,paths,cost,source,path);
 
     }

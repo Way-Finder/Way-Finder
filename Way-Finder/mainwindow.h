@@ -13,11 +13,16 @@ class MainWindow : public QMainWindow
 {
     Q_OBJECT
 
+signals:
+    void exitApp(const QString& filename = "TransportationMap.txt");
 public:
-    MainWindow(adjmap * adj, QWidget *parent = nullptr);
+    MainWindow(adjmap * adj = nullptr, QWidget *parent = nullptr);
     ~MainWindow();
+    void start();
 
 private slots:
+    void uploadFiles(const QString& filename="TransportationMap.txt");
+
     void on_pricein_textEdited(const QString &arg1);
 
     void on_pushButton_pressed();
@@ -26,7 +31,10 @@ private slots:
 
     void on_BEFES_clicked();
 
+    adjmap* readFiles(const QString& filename="TransportationMap.txt");
+
 private:
+    adjmap *madj;
     Ui::MainWindow *ui;
 };
 #endif // MAINWINDOW_H

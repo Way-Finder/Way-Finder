@@ -49,95 +49,101 @@
         </property>
         <layout class="QVBoxLayout" name="verticalLayout">
          <item>
-          <layout class="QHBoxLayout" name="horizontalLayout">
-           <item>
-            <widget class="QLabel" name="label">
-             <property name="styleSheet">
-              <string notr="true">color: rgb(0, 0, 0);</string>
-             </property>
-             <property name="text">
-              <string>Departure City</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QComboBox" name="depcity">
-             <property name="styleSheet">
-              <string notr="true">
+          <widget class="QWidget" name="" native="true">
+           <layout class="QHBoxLayout" name="horizontalLayout">
+            <item>
+             <widget class="QLabel" name="label">
+              <property name="styleSheet">
+               <string notr="true">color: rgb(0, 0, 0);</string>
+              </property>
+              <property name="text">
+               <string>Departure City</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QComboBox" name="depcity">
+              <property name="styleSheet">
+               <string notr="true">
   color: black;
   background-color: white;
   border: 3px solid black;
   padding: 2px;
 </string>
-             </property>
-            </widget>
-           </item>
-          </layout>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </widget>
          </item>
          <item>
-          <layout class="QHBoxLayout" name="horizontalLayout_2">
-           <item>
-            <widget class="QLabel" name="label_2">
-             <property name="styleSheet">
-              <string notr="true">color: rgb(0, 0, 0);</string>
-             </property>
-             <property name="text">
-              <string>Arrival City</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QComboBox" name="destcity">
-             <property name="styleSheet">
-              <string notr="true">
+          <widget class="QWidget" name="" native="true">
+           <layout class="QHBoxLayout" name="horizontalLayout_2">
+            <item>
+             <widget class="QLabel" name="label_2">
+              <property name="styleSheet">
+               <string notr="true">color: rgb(0, 0, 0);</string>
+              </property>
+              <property name="text">
+               <string>Arrival City</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QComboBox" name="destcity">
+              <property name="styleSheet">
+               <string notr="true">
   color: black;
   background-color: white;
   border: 3px solid black;
   padding: 2px;
 </string>
-             </property>
-            </widget>
-           </item>
-          </layout>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </widget>
          </item>
          <item>
-          <layout class="QHBoxLayout" name="horizontalLayout_3">
-           <item>
-            <widget class="QLabel" name="label_3">
-             <property name="styleSheet">
-              <string notr="true">color: rgb(0, 0, 0);</string>
-             </property>
-             <property name="text">
-              <string>Enter your Budget</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QLabel" name="label_4">
-             <property name="minimumSize">
-              <size>
-               <width>152</width>
-               <height>0</height>
-              </size>
-             </property>
-             <property name="text">
-              <string/>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QLineEdit" name="pricein">
-             <property name="styleSheet">
-              <string notr="true">
+          <widget class="QWidget" name="test" native="true">
+           <layout class="QHBoxLayout" name="horizontalLayout_3">
+            <item>
+             <widget class="QLabel" name="label_3">
+              <property name="styleSheet">
+               <string notr="true">color: rgb(0, 0, 0);</string>
+              </property>
+              <property name="text">
+               <string>Enter your Budget</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="label_4">
+              <property name="minimumSize">
+               <size>
+                <width>152</width>
+                <height>0</height>
+               </size>
+              </property>
+              <property name="text">
+               <string/>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLineEdit" name="pricein">
+              <property name="styleSheet">
+               <string notr="true">
   color: black;
   background-color: white;
   border: 3px solid black;
   padding: 2px;
 </string>
-             </property>
-            </widget>
-           </item>
-          </layout>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </widget>
          </item>
         </layout>
        </widget>
@@ -290,11 +296,17 @@ padding: 5px 10px;
            <x>600</x>
            <y>10</y>
            <width>151</width>
-           <height>121</height>
+           <height>131</height>
           </rect>
          </property>
          <property name="text">
-          <string>TextLabel</string>
+          <string/>
+         </property>
+         <property name="pixmap">
+          <pixmap resource="icons.qrc">:/icons/icons/DFS.png</pixmap>
+         </property>
+         <property name="scaledContents">
+          <bool>true</bool>
          </property>
         </widget>
         <widget class="QLabel" name="BFS_pic">
@@ -302,12 +314,18 @@ padding: 5px 10px;
           <rect>
            <x>610</x>
            <y>140</y>
-           <width>151</width>
-           <height>141</height>
+           <width>141</width>
+           <height>131</height>
           </rect>
          </property>
          <property name="text">
-          <string>TextLabel</string>
+          <string/>
+         </property>
+         <property name="pixmap">
+          <pixmap resource="icons.qrc">:/icons/icons/BFS.png</pixmap>
+         </property>
+         <property name="scaledContents">
+          <bool>true</bool>
          </property>
         </widget>
        </widget>
@@ -317,6 +335,8 @@ padding: 5px 10px;
    </widget>
   </widget>
  </widget>
- <resources/>
+ <resources>
+  <include location="icons.qrc"/>
+ </resources>
  <connections/>
 </ui>
