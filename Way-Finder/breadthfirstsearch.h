@@ -18,7 +18,7 @@ public:
     void insertFirstCity(QMap<QString, QVector<Connection>>&children, QQueue<QPair<int,QVector<QPair<QString,Connection>>>>&paths,int &cost);
     void insertCity(QMap<QString, QVector<Connection>>&children, QQueue<QPair<int,QVector<QPair<QString,Connection>>>>&paths,int &cost,QString &source,QPair<int,QVector<QPair<QString,Connection>>>&path);
     QMultiMap<int,QVector<QPair<QString,Connection>>> BFS(QString source,QString destination,int cost,adjmap *adj);
-
+    QVector<QString> BFSCityTraversal(QString source,adjmap *adj);
 };
 
 #endif // BREADTHFIRSTSEARCH_H

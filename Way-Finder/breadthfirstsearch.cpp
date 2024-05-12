@@ -90,5 +90,48 @@ QMultiMap<int,QVector<QPair<QString,Connection>>> BreadthFirstSearch::BFS(QStrin
     return validTrips;
 
 }
+QVector<QString> BreadthFirstSearch::BFSCityTraversal(QString source,adjmap *adj)
+{
+
+    QVector<QString>cities;
+
+    QMap<QString, QVector<Connection>>children;
+
+    QQueue<QString>queue;
+
+    queue.push_back(source);
+
+    QSet<QString>visted;
+    visted.insert(source);
+
+    while(!queue.empty())
+    {
+        QString city = queue.front();
+
+        queue.dequeue();
+        children=(*adj)[city];
+
+        for (auto it = children.begin(); it != children.end(); ++it)
+        {
+            const QString &dest = it.key();
+            //qDebug() << dest << "\n";
+            if(!visted.contains(dest))
+            {
+                cities.push_back(dest);
+                queue.push_back(dest);
+                visted.insert(dest);
+            }
+
+        }
+
+    }
+
+    // for(int i=0 ; i < cities.size() ; i++)
+    // {
+    //     qDebug() << cities[i] << "\n";
+    // }
+
+    return cities;
+}
 
 

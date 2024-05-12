@@ -19,6 +19,8 @@ public:
     MainWindow(adjmap * adj = nullptr, QWidget *parent = nullptr);
     ~MainWindow();
     void start();
+    adjmap* readFiles(const QString& filename="TransportationMap.txt");
+    adjmap* getAdjmap();
 
 private slots:
     void uploadFiles(const QString& filename="TransportationMap.txt");
@@ -31,7 +33,11 @@ private slots:
 
     void on_BEFES_clicked();
 
-    adjmap* readFiles(const QString& filename="TransportationMap.txt");
+
+
+
+
+    void on_destcity_currentTextChanged(const QString &arg1);
 
 private:
     adjmap *madj;

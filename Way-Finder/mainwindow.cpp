@@ -20,6 +20,7 @@ MainWindow::MainWindow(adjmap * adj,QWidget *parent)
         ui->depcity->addItem(it.key());
         ui->destcity->addItem(it.key());
     }
+    ui->destcity->addItem("every city");
 
     ui->BEFES->setEnabled(false);
     ui->DEFES->setEnabled(false);
@@ -141,7 +142,11 @@ void MainWindow::on_BEFES_clicked()
 {
     QString deptartureCity = ui->depcity->currentText();
     QString destinationCity = ui->destcity->currentText();
-    int budget = ui->pricein->displayText().toInt();
+    int budget =0;
+    if(ui->destcity->currentText()!="every city")
+    {
+        budget=ui->pricein->displayText().toInt();
+    }
     auto newWindow = new ValidTripsScene(deptartureCity,destinationCity,false,budget,madj);
     newWindow->setAttribute(Qt::WA_DeleteOnClose);
     newWindow->show();
@@ -184,3 +189,25 @@ adjmap* MainWindow::readFiles(const QString& filename)
     return adj;
 }
 
+
+void MainWindow::on_destcity_currentTextChanged(const QString &arg1)
+{
+    if(arg1=="every city")
+    {
+        ui->price->hide();
+        ui->BEFES->setEnabled(true);
+        ui->DEFES->setEnabled(true);
+    }
+    else
+    {
+        ui->price->show();
+        ui->pricein->clear();
+        ui->BEFES->setEnabled(false);
+        ui->DEFES->setEnabled(false);
+    }
+
+}
+adjmap* MainWindow::getAdjmap()
+{
+    return madj;
+}
