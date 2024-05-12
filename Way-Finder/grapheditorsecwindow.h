@@ -11,12 +11,12 @@ namespace Ui {
 class GraphEditorSecWindow;
 }
 
-class GraphEditorSecWindow : public QDialog
+class GraphEditorSecWindow : public QWidget
 {
     Q_OBJECT
 
 public:
-    GraphEditorSecWindow(const QString &city1, const QString &city2, adjmap *adj, QWidget *parent = nullptr);
+    GraphEditorSecWindow(adjmap *adj, QWidget *parent = nullptr);
     ~GraphEditorSecWindow();
     void removeEdge(const QString &vehicle, int cost, adjmap *adj);
     void populateModifyBox(adjmap *adj);
@@ -35,11 +35,18 @@ private slots:
     void sortCostAscending();
 
     void sortCostDescending();
+
+    void selectCity1();
+
+    void selectCity2();
+
+    void backToMainPage();
+
 private:
-    const QString city1,city2;
+    QString city1,city2;
     QString oldVehicle,oldPrice;
     Ui::GraphEditorSecWindow *ui;
-    adjmap *test_adj;
+    adjmap *adj;
     void loadEdges();
     void addGroupBox(QString vehicle,int cost,int edgeInd);
     void addEdges(QString vehicle,int cost,int edgeInd,bool addToMap);

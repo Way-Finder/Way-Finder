@@ -7,13 +7,13 @@
 #include <validtripsscene.h>
 #include <QStackedWidget>
 
-MainWindow::MainWindow(adjmap adj,QWidget *parent)
+MainWindow::MainWindow(adjmap * adj,QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
 
-    for (auto it = adj.constBegin(); it != adj.constEnd(); ++it) {
+    for (auto it = adj->constBegin(); it != adj->constEnd(); ++it) {
         ui->depcity->addItem(it.key());
         ui->destcity->addItem(it.key());
     }
@@ -51,11 +51,11 @@ void MainWindow::on_pricein_textEdited(const QString &arg1)
 void MainWindow::on_pushButton_pressed()
 {
     SearchScene searchscene;
-    const QString s1 = "Cairo", s2 = "Giza";
-    GraphEditorSecWindow GG(s1, s2, searchscene.getAdjMap());
-    this->hide();
-    GG.setModal(true);
-    GG.exec();
+    searchscene.readfile("TransportationMap.txt");
+    GraphEditorSecWindow *editEdgePage=new GraphEditorSecWindow(searchscene.getAdjMap());
+    this->close();
+    editEdgePage->setAttribute(Qt::WA_DeleteOnClose);
+    editEdgePage->show();
 
 }
 

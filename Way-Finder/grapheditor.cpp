@@ -39,9 +39,9 @@ void GraphEditor::on_secWindow_clicked()
     }
 
 
-    GraphEditorSecWindow *secWindow = new GraphEditorSecWindow(city1, city2,m_adj);
-    secWindow->setAttribute(Qt::WA_DeleteOnClose);
-    secWindow->show();
+    // GraphEditorSecWindow *secWindow = new GraphEditorSecWindow(city1, city2,m_adj);
+    // secWindow->setAttribute(Qt::WA_DeleteOnClose);
+    // secWindow->show();
    // close();
 
 }

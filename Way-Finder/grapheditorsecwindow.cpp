@@ -8,27 +8,37 @@
 #include <editedge.h>
 #include <newedgeinput.h>
 #include <QLineEdit>
+#include <mainwindow.h>
 
-GraphEditorSecWindow::GraphEditorSecWindow(const QString &city1, const QString &city2, adjmap *adj, QWidget *parent)
-    : QDialog(parent)
-    , city1(city1)
-    , city2(city2)
-    , ui(new Ui::GraphEditorSecWindow)
+GraphEditorSecWindow::GraphEditorSecWindow(adjmap *adj, QWidget *parent)
+    : QWidget(parent),
+    ui(new Ui::GraphEditorSecWindow)
 
 {
     ui->setupUi(this);
 
+    this->adj = adj;
 
-    test_adj = adj;
-    ui->city1Label->setText(city1);
-    ui->city2Label->setText(city2);
-    ui->numEdges->setText(QString::number((*adj)[city1][city2].size()));
+
+    for (auto it = this->adj->begin(); it != this->adj->end(); ++it) {
+        ui->city1Combo->addItem(it.key());
+        ui->city2Combo->addItem(it.key());
+    }
+    ui->numEdges->setText(QString::number((*this->adj)[city1][city2].size()));
+
+    city1=ui->city1Combo->currentText();
+    city2=ui->city2Combo->currentText();
 
     connect(ui->pushButton,&QPushButton::clicked,this,&GraphEditorSecWindow::addEdgeButton);
     connect(ui->sortAscending,&QPushButton::clicked,this,&GraphEditorSecWindow::sortCostAscending);
     connect(ui->sortDescending,&QPushButton::clicked,this,&GraphEditorSecWindow::sortCostDescending);
+    connect(ui->city1Combo,&QComboBox::activated,this,&GraphEditorSecWindow::selectCity1);
+    connect(ui->city2Combo,&QComboBox::activated,this,&GraphEditorSecWindow::selectCity2);
+    connect(ui->mainPageButton,&QPushButton::clicked,this,&GraphEditorSecWindow::backToMainPage);
+
 
     loadEdges();
+
 }
 
 GraphEditorSecWindow::~GraphEditorSecWindow()
@@ -39,7 +49,7 @@ GraphEditorSecWindow::~GraphEditorSecWindow()
 void GraphEditorSecWindow::addEdges(QString vehicle,int cost,int edgeInd,bool addToMap=true)
 {
     if(addToMap){
-        AddEdges add(test_adj,city1,city2);
+        AddEdges add(adj,city1,city2);
         add.AddEdge(city1,city2,vehicle,cost);
         loadEdges();
     }else addGroupBox(vehicle,cost,edgeInd);
@@ -62,13 +72,14 @@ void GraphEditorSecWindow::loadEdges()
     removeGroupBoxes();
 
     int cnt=1;
-    for(auto i:(*test_adj)[city1][city2]){
+    for(auto i:(*adj)[city1][city2]){
         addEdges(i.vehicle,i.cost,cnt++,false);
     }
 
-    ui->numEdges->setText(QString::number((*test_adj)[city1][city2].size()));
 
-    AddEdges isCompleteGraph(test_adj,city1,city2);
+    ui->numEdges->setText(QString::number((*adj)[city1][city2].size()));
+
+    AddEdges isCompleteGraph(adj,city1,city2);
     if(isCompleteGraph.IsCompleteGraph()){
         ui->isComplete->setText("The graph is a complete graph!");
         ui->isComplete->setStyleSheet("QLabel { color: DarkGreen; }");
@@ -76,7 +87,6 @@ void GraphEditorSecWindow::loadEdges()
         ui->isComplete->setText("The graph is not a complete graph!");
         ui->isComplete->setStyleSheet("QLabel { color: DarkRed; }");
     }
-
 }
 
 void GraphEditorSecWindow::deleteEdge()
@@ -100,8 +110,8 @@ void GraphEditorSecWindow::deleteEdge()
         }
     }
 
-     removeEdge(oldVehicle,oldCost.toInt(),test_adj);
-     loadEdges();
+    removeEdge(oldVehicle,oldCost.toInt(),adj);
+    loadEdges();
 
 }
 
@@ -111,7 +121,7 @@ void GraphEditorSecWindow::addEdgeButton()
     newEdge.exec();
 
     if(!newEdge.getVehicle().isEmpty() && newEdge.getPrice())
-        addEdges(newEdge.getVehicle(),newEdge.getPrice(),(*test_adj)[city1][city2].size());
+        addEdges(newEdge.getVehicle(),newEdge.getPrice(),(*adj)[city1][city2].size());
 
 }
 
@@ -157,7 +167,7 @@ void GraphEditorSecWindow::editEdge()
 
     if(buttonSender->text()=="Apply"){
         if(!newVehicle.isEmpty() && !newCost.isEmpty()){
-            editedge edit(city1,city2,oldVehicle,oldPrice.toFloat(),test_adj);
+            editedge edit(city1,city2,oldVehicle,oldPrice.toFloat(),adj);
             edit.setNewPrice(newCost.toFloat());
             edit.setNewTransportation(newVehicle);
             edit.editEdge();
@@ -168,14 +178,34 @@ void GraphEditorSecWindow::editEdge()
 
 void GraphEditorSecWindow::sortCostAscending()
 {
-    std::sort((*test_adj)[city1][city2].begin(),(*test_adj)[city1][city2].end());
+    std::sort((*adj)[city1][city2].begin(),(*adj)[city1][city2].end());
     loadEdges();
 }
 
 void GraphEditorSecWindow::sortCostDescending()
 {
-    std::sort((*test_adj)[city1][city2].begin(),(*test_adj)[city1][city2].end(),std::greater<Connection>());
+    std::sort((*adj)[city1][city2].begin(),(*adj)[city1][city2].end(),std::greater<Connection>());
     loadEdges();
+}
+
+void GraphEditorSecWindow::selectCity1()
+{
+    city1 = ui->city1Combo->currentText();
+    loadEdges();
+}
+
+void GraphEditorSecWindow::selectCity2()
+{
+    city2 = ui->city2Combo->currentText();
+    loadEdges();
+}
+
+void GraphEditorSecWindow::backToMainPage()
+{
+    MainWindow *mainPage = new MainWindow(adj);
+    this->close();
+    mainPage->setAttribute(Qt::WA_DeleteOnClose);
+    mainPage->show();
 }
 
 void GraphEditorSecWindow::addGroupBox(QString vehicle,int cost,int edgeInd)
@@ -235,9 +265,9 @@ void GraphEditorSecWindow::addGroupBox(QString vehicle,int cost,int edgeInd)
     lineEdit2->setSizePolicy(t);
     lineEdit2->setReadOnly(true);
     lineEdit2->setStyleSheet("QLineEdit {"
-                            "border: 2px solid #333;"  // 2px solid border with color #333
-                            "border-radius: 5px;"      // Optional: Rounded corners
-                            "}");
+                             "border: 2px solid #333;"  // 2px solid border with color #333
+                             "border-radius: 5px;"      // Optional: Rounded corners
+                             "}");
 
     horizontalLayout->addWidget(lineEdit2);
 
@@ -251,31 +281,6 @@ void GraphEditorSecWindow::addGroupBox(QString vehicle,int cost,int edgeInd)
     QPushButton *deleteButton = new QPushButton(groupBox);
     deleteButton->setText("Delete");
     deleteButton->setStyleSheet(QString::fromUtf8("QPushButton {\n"
-                                                "    background-color: #808080; /* Slightly darker gray */\n"
-                                                "    border: none;\n"
-                                                "    color: white;\n"
-                                                "    padding: 10px 24px;\n"
-                                                "    text-align: center;\n"
-                                                "    text-decoration: none;\n"
-                                                "    display: inline-block;\n"
-                                                "    font-size: 16px;\n"
-                                                "    margin: 4px 2px;\n"
-                                                "    cursor: pointer;\n"
-                                                "    border-radius: 12px; /* Set the border radius to make it rounded */\n"
-                                                "}\n"
-                                                "\n"
-                                                "QPushButton:hover {\n"
-                                                "    background-color: #606060; /* Darker gray when hovered */\n"
-                                                "}\n"
-                                                "\n"
-                                                "QPushButton:pressed {\n"
-                                                "    background-color: #999999; /* Even darker gray when pressed */\n"
-                                                "}\n"
-                                                ""));
-
-    QPushButton *OkButton = new QPushButton(groupBox);
-    OkButton->setText("Apply");
-    OkButton->setStyleSheet(QString::fromUtf8("QPushButton {\n"
                                                   "    background-color: #808080; /* Slightly darker gray */\n"
                                                   "    border: none;\n"
                                                   "    color: white;\n"
@@ -298,9 +303,9 @@ void GraphEditorSecWindow::addGroupBox(QString vehicle,int cost,int edgeInd)
                                                   "}\n"
                                                   ""));
 
-    QPushButton *cancelButton = new QPushButton(groupBox);
-    cancelButton->setText("Cancel");
-    cancelButton->setStyleSheet(QString::fromUtf8("QPushButton {\n"
+    QPushButton *OkButton = new QPushButton(groupBox);
+    OkButton->setText("Apply");
+    OkButton->setStyleSheet(QString::fromUtf8("QPushButton {\n"
                                               "    background-color: #808080; /* Slightly darker gray */\n"
                                               "    border: none;\n"
                                               "    color: white;\n"
@@ -323,9 +328,9 @@ void GraphEditorSecWindow::addGroupBox(QString vehicle,int cost,int edgeInd)
                                               "}\n"
                                               ""));
 
-    QPushButton *editButton = new QPushButton(groupBox);
-    editButton->setText("Edit");
-    editButton->setStyleSheet(QString::fromUtf8("QPushButton {\n"
+    QPushButton *cancelButton = new QPushButton(groupBox);
+    cancelButton->setText("Cancel");
+    cancelButton->setStyleSheet(QString::fromUtf8("QPushButton {\n"
                                                   "    background-color: #808080; /* Slightly darker gray */\n"
                                                   "    border: none;\n"
                                                   "    color: white;\n"
@@ -347,6 +352,31 @@ void GraphEditorSecWindow::addGroupBox(QString vehicle,int cost,int edgeInd)
                                                   "    background-color: #999999; /* Even darker gray when pressed */\n"
                                                   "}\n"
                                                   ""));
+
+    QPushButton *editButton = new QPushButton(groupBox);
+    editButton->setText("Edit");
+    editButton->setStyleSheet(QString::fromUtf8("QPushButton {\n"
+                                                "    background-color: #808080; /* Slightly darker gray */\n"
+                                                "    border: none;\n"
+                                                "    color: white;\n"
+                                                "    padding: 10px 24px;\n"
+                                                "    text-align: center;\n"
+                                                "    text-decoration: none;\n"
+                                                "    display: inline-block;\n"
+                                                "    font-size: 16px;\n"
+                                                "    margin: 4px 2px;\n"
+                                                "    cursor: pointer;\n"
+                                                "    border-radius: 12px; /* Set the border radius to make it rounded */\n"
+                                                "}\n"
+                                                "\n"
+                                                "QPushButton:hover {\n"
+                                                "    background-color: #606060; /* Darker gray when hovered */\n"
+                                                "}\n"
+                                                "\n"
+                                                "QPushButton:pressed {\n"
+                                                "    background-color: #999999; /* Even darker gray when pressed */\n"
+                                                "}\n"
+                                                ""));
 
 
 
@@ -394,4 +424,3 @@ void GraphEditorSecWindow::removeEdge(const QString &vehicle, int cost, adjmap *
     }
 
 }
-

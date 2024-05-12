@@ -112,7 +112,7 @@ void ValidTripsScene::on_toHomeScreenButton_clicked()
 {
     SearchScene searchscene;
     searchscene.readfile("TransportationMap.txt");
-    auto window = new MainWindow(searchscene.adj);
+    auto window = new MainWindow(searchscene.getAdjMap());
     window->show();
     close();
 }

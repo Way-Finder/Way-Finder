@@ -20,7 +20,7 @@ int main(int argc, char *argv[])
     /*GraphEditorSecWindow GG(s1, s2, searchscene.getAdjMap());
     GG.show();*/
 
-    MainWindow w(searchscene.adj);
+    MainWindow w(searchscene.getAdjMap());
     w.show();
 
     return a.exec();

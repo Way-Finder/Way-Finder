@@ -1,5 +1,7 @@
 <RCC>
     <qresource prefix="/icons">
         <file>icons/arrows.svg</file>
+        <file>icons/direction_arrow.svg</file>
+        <file>icons/down_arrow.svg</file>
     </qresource>
 </RCC>

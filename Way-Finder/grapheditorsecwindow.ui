@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1359</width>
+    <width>1422</width>
     <height>760</height>
    </rect>
   </property>
@@ -26,7 +26,49 @@
    <string notr="true">background-color: rgb(211, 211, 211);</string>
   </property>
   <layout class="QGridLayout" name="gridLayout">
-   <item row="2" column="0">
+   <item row="9" column="0">
+    <widget class="QScrollArea" name="scrollArea">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+       <horstretch>0</horstretch>
+       <verstretch>124</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(211, 211, 211);</string>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::Box</enum>
+     </property>
+     <property name="lineWidth">
+      <number>7</number>
+     </property>
+     <property name="midLineWidth">
+      <number>0</number>
+     </property>
+     <property name="widgetResizable">
+      <bool>true</bool>
+     </property>
+     <widget class="QWidget" name="scrollAreaWidgetContents_3">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>1372</width>
+        <height>435</height>
+       </rect>
+      </property>
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <layout class="QVBoxLayout" name="verticalLayout_3"/>
+     </widget>
+    </widget>
+   </item>
+   <item row="10" column="0">
     <layout class="QHBoxLayout" name="horizontalLayout_5">
      <item>
       <widget class="QPushButton" name="sortAscending">
@@ -39,13 +81,14 @@
        <property name="styleSheet">
         <string notr="true">QPushButton {
     background-color: #606060; /* Slightly darker gray */
-    border: none;
-    color: white;
-    padding: 10px 24px;
+    border: 3px solid black;
+    border-radius: 20px;
+    padding: 5px 10px; 
     text-align: center;
     text-decoration: none;
     display: inline-block;
     font-size: 16px;
+	font: bold 20px;
     margin: 4px 2px;
     cursor: pointer;
     border-radius: 12px; /* Set the border radius to make it rounded */
@@ -76,13 +119,14 @@ QPushButton:pressed {
        <property name="styleSheet">
         <string notr="true">QPushButton {
     background-color: #606060; /* Slightly darker gray */
-    border: none;
-    color: white;
-    padding: 10px 24px;
+    border: 3px solid black;
+    border-radius: 20px;
+    padding: 5px 10px; 
     text-align: center;
     text-decoration: none;
     display: inline-block;
     font-size: 16px;
+	font: bold 20px;
     margin: 4px 2px;
     cursor: pointer;
     border-radius: 12px; /* Set the border radius to make it rounded */
@@ -153,13 +197,14 @@ QPushButton:pressed {
        <property name="styleSheet">
         <string notr="true">QPushButton {
     background-color: #606060; /* Slightly darker gray */
-    border: none;
-    color: white;
-    padding: 10px 24px;
+    border: 3px solid black;
+    border-radius: 20px;
+    padding: 5px 10px; 
     text-align: center;
     text-decoration: none;
     display: inline-block;
     font-size: 16px;
+	font: bold 20px;
     margin: 4px 2px;
     cursor: pointer;
     border-radius: 12px; /* Set the border radius to make it rounded */
@@ -181,49 +226,41 @@ QPushButton:pressed {
      </item>
     </layout>
    </item>
-   <item row="1" column="0">
-    <widget class="QScrollArea" name="scrollArea">
-     <property name="sizePolicy">
-      <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
-       <horstretch>0</horstretch>
-       <verstretch>124</verstretch>
-      </sizepolicy>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">background-color: rgb(211, 211, 211);</string>
-     </property>
-     <property name="frameShape">
-      <enum>QFrame::Box</enum>
-     </property>
-     <property name="lineWidth">
-      <number>7</number>
-     </property>
-     <property name="midLineWidth">
-      <number>0</number>
-     </property>
-     <property name="widgetResizable">
-      <bool>true</bool>
-     </property>
-     <widget class="QWidget" name="scrollAreaWidgetContents_3">
-      <property name="geometry">
-       <rect>
-        <x>0</x>
-        <y>0</y>
-        <width>1309</width>
-        <height>476</height>
-       </rect>
-      </property>
-      <property name="sizePolicy">
-       <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-        <horstretch>0</horstretch>
-        <verstretch>0</verstretch>
-       </sizepolicy>
-      </property>
-      <layout class="QVBoxLayout" name="verticalLayout_3"/>
-     </widget>
-    </widget>
+   <item row="3" column="0" rowspan="2">
+    <layout class="QHBoxLayout" name="horizontalLayout_2">
+     <item>
+      <spacer name="horizontalSpacer_2">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeType">
+        <enum>QSizePolicy::Fixed</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>459</width>
+         <height>14</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <widget class="QLabel" name="isComplete">
+       <property name="font">
+        <font>
+         <pointsize>20</pointsize>
+         <italic>true</italic>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="text">
+        <string>**This is not a complete graph**</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
    </item>
-   <item row="0" column="0">
+   <item row="1" column="0">
     <widget class="QFrame" name="frame">
      <property name="sizePolicy">
       <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
@@ -235,7 +272,35 @@ QPushButton:pressed {
       <bool>false</bool>
      </property>
      <property name="styleSheet">
-      <string notr="true">background-color: rgb(128, 128, 128);</string>
+      <string notr="true">background-color: rgb(128, 128, 128);
+QComboBox {
+    background-color: white;
+    border: 2px solid qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(0, 0, 0, 255), stop:1 rgba(64, 64, 64, 255));
+    border-radius: 10px;
+    padding: 1px 18px 1px 3px;
+}
+
+QComboBox::drop-down {
+    subcontrol-origin: padding;
+    subcontrol-position: top right;
+    width: 20px;
+
+    border-left-width: 1px;
+    border-left-color: rgba(0, 0, 0, 255);
+    border-left-style: solid;
+}
+
+QComboBox::down-arrow {
+    image: url(:/icons/icons/down_arrow.svg); 
+	width : 20px;
+}
+
+QComboBox::down-arrow:on {
+    top: 1px;
+    left: 1px;
+}
+
+</string>
      </property>
      <property name="frameShape">
       <enum>QFrame::Box</enum>
@@ -246,104 +311,145 @@ QPushButton:pressed {
      <property name="lineWidth">
       <number>9</number>
      </property>
+     <widget class="QComboBox" name="city2Combo">
+      <property name="geometry">
+       <rect>
+        <x>620</x>
+        <y>90</y>
+        <width>361</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QComboBox {
+    background-color: white;
+    border: 2px solid qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(0, 0, 0, 255), stop:1 rgba(64, 64, 64, 255));
+    border-radius: 10px;
+    padding: 1px 18px 1px 3px; 
+}
+
+QComboBox QAbstractItemView {
+    background-color: white; 
+    border: 2px solid qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(0, 0, 0, 255), stop:1 rgba(64, 64, 64, 255));
+    border-radius: 10px;
+    selection-background-color: lightblue;
+}
+
+QComboBox::drop-down {
+    subcontrol-origin: padding;
+    subcontrol-position: top right;
+    width: 20px;
+
+    border-left-width: 1px;
+    border-left-color: rgba(0, 0, 0, 255);
+    border-left-style: solid;
+}
+
+QComboBox::down-arrow {
+    image: url(:/icons/icons/down_arrow.svg); 
+	width : 20px;
+}
+
+QComboBox::down-arrow:on {
+    top: 1px;
+    left: 1px;
+}
+
+</string>
+      </property>
+     </widget>
+     <widget class="QComboBox" name="city1Combo">
+      <property name="geometry">
+       <rect>
+        <x>620</x>
+        <y>20</y>
+        <width>361</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QComboBox {
+    background-color: white;
+    border: 2px solid qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(0, 0, 0, 255), stop:1 rgba(64, 64, 64, 255));
+    border-radius: 10px;
+    padding: 1px 18px 1px 3px; 
+}
+
+QComboBox QAbstractItemView {
+    background-color: white; 
+    border: 2px solid qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(0, 0, 0, 255), stop:1 rgba(64, 64, 64, 255));
+    border-radius: 10px;
+    selection-background-color: lightblue;
+}
+
+QComboBox::drop-down {
+    subcontrol-origin: padding;
+    subcontrol-position: top right;
+    width: 20px;
+
+    border-left-width: 1px;
+    border-left-color: rgba(0, 0, 0, 255);
+    border-left-style: solid;
+}
+
+QComboBox::down-arrow {
+    image: url(:/icons/icons/down_arrow.svg); 
+	width : 20px;
+}
+
+QComboBox::down-arrow:on {
+    top: 1px;
+    left: 1px;
+}
+
+</string>
+      </property>
+     </widget>
      <widget class="QLabel" name="city1Label">
       <property name="geometry">
        <rect>
-        <x>150</x>
-        <y>30</y>
-        <width>271</width>
-        <height>51</height>
+        <x>480</x>
+        <y>20</y>
+        <width>91</width>
+        <height>41</height>
        </rect>
-      </property>
-      <property name="sizePolicy">
-       <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-        <horstretch>0</horstretch>
-        <verstretch>0</verstretch>
-       </sizepolicy>
       </property>
       <property name="font">
        <font>
         <family>MV Boli</family>
-        <pointsize>22</pointsize>
-        <bold>false</bold>
+        <pointsize>20</pointsize>
        </font>
       </property>
       <property name="text">
-       <string>City1</string>
+       <string>City1:</string>
       </property>
      </widget>
      <widget class="QLabel" name="city2Label">
       <property name="geometry">
        <rect>
-        <x>150</x>
+        <x>480</x>
         <y>80</y>
-        <width>271</width>
-        <height>41</height>
-       </rect>
-      </property>
-      <property name="sizePolicy">
-       <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-        <horstretch>0</horstretch>
-        <verstretch>0</verstretch>
-       </sizepolicy>
-      </property>
-      <property name="font">
-       <font>
-        <family>MV Boli</family>
-        <pointsize>22</pointsize>
-        <bold>false</bold>
-       </font>
-      </property>
-      <property name="text">
-       <string>City2</string>
-      </property>
-     </widget>
-     <widget class="QLabel" name="numEdges">
-      <property name="geometry">
-       <rect>
-        <x>1150</x>
-        <y>100</y>
-        <width>111</width>
-        <height>41</height>
-       </rect>
-      </property>
-      <property name="font">
-       <font>
-        <family>MV Boli</family>
-        <pointsize>16</pointsize>
-       </font>
-      </property>
-      <property name="text">
-       <string>XX</string>
-      </property>
-     </widget>
-     <widget class="QLabel" name="label">
-      <property name="geometry">
-       <rect>
-        <x>1220</x>
-        <y>90</y>
         <width>101</width>
-        <height>51</height>
+        <height>41</height>
        </rect>
       </property>
       <property name="font">
        <font>
-        <family>Trebuchet MS</family>
-        <pointsize>22</pointsize>
-        <bold>true</bold>
+        <family>MV Boli</family>
+        <pointsize>20</pointsize>
        </font>
       </property>
       <property name="text">
-       <string>Edges</string>
+       <string>City2:</string>
       </property>
      </widget>
-     <widget class="QLabel" name="label_2">
+     <widget class="QLabel" name="label_4">
       <property name="geometry">
        <rect>
-        <x>30</x>
-        <y>30</y>
-        <width>91</width>
-        <height>101</height>
+        <x>360</x>
+        <y>10</y>
+        <width>111</width>
+        <height>121</height>
        </rect>
       </property>
       <property name="font">
@@ -357,32 +463,97 @@ QPushButton:pressed {
        <string/>
       </property>
       <property name="pixmap">
-       <pixmap resource="icons.qrc">:/icons/icons/arrows.svg</pixmap>
+       <pixmap resource="icons.qrc">:/icons/icons/direction_arrow.svg</pixmap>
       </property>
       <property name="scaledContents">
        <bool>true</bool>
       </property>
      </widget>
-     <widget class="QLabel" name="isComplete">
+     <widget class="QPushButton" name="mainPageButton">
       <property name="geometry">
        <rect>
-        <x>460</x>
-        <y>80</y>
-        <width>461</width>
+        <x>10</x>
+        <y>10</y>
+        <width>191</width>
         <height>51</height>
        </rect>
       </property>
-      <property name="font">
-       <font>
-        <pointsize>20</pointsize>
-        <italic>true</italic>
-        <bold>true</bold>
-       </font>
+      <property name="styleSheet">
+       <string notr="true">QPushButton {
+    background-color: #606060; /* Slightly darker gray */
+    border: 3px solid black;
+    border-radius: 20px;
+    padding: 5px 10px; 
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+	font: bold 20px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 12px; /* Set the border radius to make it rounded */
+}
+
+QPushButton:hover {
+    background-color: #404040 /* Darker gray when hovered */
+}
+
+QPushButton:pressed {
+    background-color: #999999; /* Even darker gray when pressed */
+}
+</string>
       </property>
       <property name="text">
-       <string>This is not a complete graph</string>
+       <string>Main Page</string>
       </property>
      </widget>
+     <widget class="QWidget" name="layoutWidget">
+      <property name="geometry">
+       <rect>
+        <x>1150</x>
+        <y>70</y>
+        <width>153</width>
+        <height>52</height>
+       </rect>
+      </property>
+      <layout class="QHBoxLayout" name="horizontalLayout_3">
+       <item>
+        <widget class="QLabel" name="numEdges">
+         <property name="font">
+          <font>
+           <family>Segoe UI Black</family>
+           <pointsize>20</pointsize>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="text">
+          <string>XX</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="label">
+         <property name="font">
+          <font>
+           <family>Trebuchet MS</family>
+           <pointsize>22</pointsize>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="text">
+          <string>Edges</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <zorder>layoutWidget</zorder>
+     <zorder>city1Combo</zorder>
+     <zorder>city2Combo</zorder>
+     <zorder>city1Label</zorder>
+     <zorder>city2Label</zorder>
+     <zorder>label_4</zorder>
+     <zorder>mainPageButton</zorder>
     </widget>
    </item>
   </layout>
