@@ -22,6 +22,10 @@ private slots:
 
     void on_pushButton_pressed();
 
+    void on_DEFES_clicked();
+
+    void on_BEFES_clicked();
+
 private:
     Ui::MainWindow *ui;
 };

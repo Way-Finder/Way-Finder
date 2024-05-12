@@ -4,6 +4,7 @@
 #include <QPixmap>
 #include <grapheditorsecwindow.h>
 #include <searchscene.h>
+#include <validtripsscene.h>
 #include <QStackedWidget>
 
 MainWindow::MainWindow(adjmap adj,QWidget *parent)
@@ -51,9 +52,37 @@ void MainWindow::on_pushButton_pressed()
 {
     SearchScene searchscene;
     const QString s1 = "Cairo", s2 = "Giza";
-    GraphEditorSecWindow GG(s1, s2, SearchScene().getAdjMap());
+    GraphEditorSecWindow GG(s1, s2, searchscene.getAdjMap());
     this->hide();
     GG.setModal(true);
     GG.exec();
 
 }
+
+void MainWindow::on_DEFES_clicked()
+{
+    SearchScene searchscene;
+    searchscene.readfile("TransportationMap.txt");
+    QString deptartureCity = ui->depcity->currentText();
+    QString destinationCity = ui->destcity->currentText();
+    int budget = ui->pricein->displayText().toInt();
+    adjmap map = searchscene.adj;
+    auto newWindow = new ValidTripsScene(deptartureCity,destinationCity,true,budget,map);
+    newWindow->show();
+    close();
+}
+
+
+void MainWindow::on_BEFES_clicked()
+{
+    SearchScene searchscene;
+    searchscene.readfile("TransportationMap.txt");
+    QString deptartureCity = ui->depcity->currentText();
+    QString destinationCity = ui->destcity->currentText();
+    int budget = ui->pricein->displayText().toInt();
+    adjmap map = searchscene.adj;
+    auto newWindow = new ValidTripsScene(deptartureCity,destinationCity,false,budget,map);
+    newWindow->show();
+    close();
+}
+

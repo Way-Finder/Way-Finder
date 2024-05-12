@@ -1,4 +1,6 @@
 #include "validtripsscene.h"
+#include "mainwindow.h"
+#include "searchscene.h"
 #include "ui_validtripsscene.h"
 #include "depthfirstsearch.h"
 #include "breadthfirstsearch.h"
@@ -34,7 +36,7 @@ ValidTripsScene::ValidTripsScene(const QString& departureCity,const QString& arr
         BreadthFirstSearch navigator;
         validTrips=navigator.BFS(departureCity,arrivalCity,budget,adj);
     }
-    int i = 1;
+    int i = 0;
     //QMultiMap<int, QVector<QPair<QString, Connection>>>
     for (auto it = validTrips.begin(); it != validTrips.end(); ++it,i++)
     {
@@ -105,3 +107,13 @@ ValidTripsScene::~ValidTripsScene()
 {
     delete ui;
 }
+
+void ValidTripsScene::on_toHomeScreenButton_clicked()
+{
+    SearchScene searchscene;
+    searchscene.readfile("TransportationMap.txt");
+    auto window = new MainWindow(searchscene.adj);
+    window->show();
+    close();
+}
+

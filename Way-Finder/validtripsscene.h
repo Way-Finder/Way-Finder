@@ -21,6 +21,9 @@ public:
     explicit ValidTripsScene(const QString& departureCity,const QString& arrivalCity,bool traversingDFS,int budget,adjmap adj,QWidget *parent = nullptr);
     ~ValidTripsScene();
 
+private slots:
+    void on_toHomeScreenButton_clicked();
+
 private:
     QString departureCity;
     QString arrivalCity;
