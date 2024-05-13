@@ -259,6 +259,7 @@ public:
         city2Combo->setObjectName("city2Combo");
         city2Combo->setGeometry(QRect(620, 90, 361, 31));
         city2Combo->setStyleSheet(QString::fromUtf8("QComboBox {\n"
+"	color: rgb(0, 0, 0);\n"
 "    background-color: white;\n"
 "    border: 2px solid qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(0, 0, 0, 255), stop:1 rgba(64, 64, 64, 255));\n"
 "    border-radius: 10px;\n"
@@ -273,6 +274,7 @@ public:
 "}\n"
 "\n"
 "QComboBox::drop-down {\n"
+"color: rgb(0, 0, 0);\n"
 "    subcontrol-origin: padding;\n"
 "    subcontrol-position: top right;\n"
 "    width: 20px;\n"
@@ -289,7 +291,8 @@ public:
 "\n"
 "QComboBox::down-arrow:on {\n"
 "    top: 1px;\n"
-"    left: 1px;\n"
+"    left: 1"
+                        "px;\n"
 "}\n"
 "\n"
 ""));
@@ -297,6 +300,7 @@ public:
         city1Combo->setObjectName("city1Combo");
         city1Combo->setGeometry(QRect(620, 20, 361, 31));
         city1Combo->setStyleSheet(QString::fromUtf8("QComboBox {\n"
+"	color: rgb(0, 0, 0);\n"
 "    background-color: white;\n"
 "    border: 2px solid qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(0, 0, 0, 255), stop:1 rgba(64, 64, 64, 255));\n"
 "    border-radius: 10px;\n"
@@ -304,6 +308,7 @@ public:
 "}\n"
 "\n"
 "QComboBox QAbstractItemView {\n"
+"color: rgb(0, 0, 0);\n"
 "    background-color: white; \n"
 "    border: 2px solid qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(0, 0, 0, 255), stop:1 rgba(64, 64, 64, 255));\n"
 "    border-radius: 10px;\n"
@@ -311,6 +316,7 @@ public:
 "}\n"
 "\n"
 "QComboBox::drop-down {\n"
+"color: rgb(0, 0, 0);\n"
 "    subcontrol-origin: padding;\n"
 "    subcontrol-position: top right;\n"
 "    width: 20px;\n"
@@ -326,7 +332,8 @@ public:
 "}\n"
 "\n"
 "QComboBox::down-arrow:on {\n"
-"    top: 1px;\n"
+"    "
+                        "top: 1px;\n"
 "    left: 1px;\n"
 "}\n"
 "\n"

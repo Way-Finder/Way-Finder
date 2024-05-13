@@ -23,7 +23,7 @@ public:
     QMultiMap<int,QVector<QPair<QString,Connection>>> getValidPaths();
     void Connectivity(QString source,adjmap *adj);
     bool isConnected(QString source,adjmap *graph);
-
+    void everyCityDfs(QString source, QVector<QString>& path, adjmap *graph);
     QString getPlan();
 };
 

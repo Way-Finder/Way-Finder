@@ -49,19 +49,18 @@ void MainWindow::start()
 void MainWindow::uploadFiles(const QString& filename)
 {
     for (auto outerIt = madj->begin(); outerIt != madj->end(); ++outerIt) {
-        // Iterate over the inner map (keys are QString, values are QList<Connection>)
+
         QMap<QString, QList<Connection>>& innerMap = outerIt.value();
         for (auto innerIt = innerMap.begin(); innerIt != innerMap.end(); ++innerIt) {
-            // Check if the QList is empty
+
             if (innerIt.value().isEmpty()) {
-                // Remove the inner key (empty QList)
+
                 innerMap.erase(innerIt);
 
-                // Check if the inner map is now empty
+
                 if (innerMap.isEmpty()) {
-                    // Remove the outer key if the inner map became empty
                     madj->erase(outerIt);
-                    break; // Break out of the inner loop to avoid unnecessary iterations
+                    break;
                 }
             }
         }
@@ -149,7 +148,11 @@ void MainWindow::on_DEFES_clicked()
 {
     QString deptartureCity = ui->depcity->currentText();
     QString destinationCity = ui->destcity->currentText();
-    int budget = ui->pricein->displayText().toInt();
+    int budget =0;
+    if(ui->destcity->currentText()!="every city")
+    {
+        budget=ui->pricein->displayText().toInt();
+    }
     auto newWindow = new ValidTripsScene(deptartureCity,destinationCity,true,budget,madj);
     newWindow->setAttribute(Qt::WA_DeleteOnClose);
     newWindow->show();

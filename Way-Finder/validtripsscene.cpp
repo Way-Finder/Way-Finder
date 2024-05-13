@@ -14,6 +14,7 @@
 #include <QDebug>
 #include <QWidget>
 #include <adjgraph.h>
+
 ValidTripsScene::ValidTripsScene(const QString& departureCity,const QString& arrivalCity,bool traversingDFS,int budget,adjmap *adj,QWidget *parent)
     : QWidget(parent)
     ,departureCity(departureCity)
@@ -32,10 +33,8 @@ ValidTripsScene::ValidTripsScene(const QString& departureCity,const QString& arr
         validTrips = navigator.getValidPaths();
         int i = 0;
         QVector<QString> cities;
-        cities.push_back("Giza");
-        cities.push_back("Cairo");
-        cities.push_back("Banesuef");
-        cities.push_back("Assyuit");
+        DepthFirstSearch dfsobj(departureCity, arrivalCity,0);
+        dfsobj.everyCityDfs(departureCity,cities, madj);
         if(arrivalCity=="every city")
         {
             ui->validTripsNumberLabel_2->setText("Cities");

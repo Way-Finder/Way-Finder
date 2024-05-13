@@ -322,6 +322,7 @@ QComboBox::down-arrow:on {
       </property>
       <property name="styleSheet">
        <string notr="true">QComboBox {
+	color: rgb(0, 0, 0);
     background-color: white;
     border: 2px solid qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(0, 0, 0, 255), stop:1 rgba(64, 64, 64, 255));
     border-radius: 10px;
@@ -336,6 +337,7 @@ QComboBox QAbstractItemView {
 }
 
 QComboBox::drop-down {
+color: rgb(0, 0, 0);
     subcontrol-origin: padding;
     subcontrol-position: top right;
     width: 20px;
@@ -369,6 +371,7 @@ QComboBox::down-arrow:on {
       </property>
       <property name="styleSheet">
        <string notr="true">QComboBox {
+	color: rgb(0, 0, 0);
     background-color: white;
     border: 2px solid qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(0, 0, 0, 255), stop:1 rgba(64, 64, 64, 255));
     border-radius: 10px;
@@ -376,6 +379,7 @@ QComboBox::down-arrow:on {
 }
 
 QComboBox QAbstractItemView {
+color: rgb(0, 0, 0);
     background-color: white; 
     border: 2px solid qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(0, 0, 0, 255), stop:1 rgba(64, 64, 64, 255));
     border-radius: 10px;
@@ -383,6 +387,7 @@ QComboBox QAbstractItemView {
 }
 
 QComboBox::drop-down {
+color: rgb(0, 0, 0);
     subcontrol-origin: padding;
     subcontrol-position: top right;
     width: 20px;

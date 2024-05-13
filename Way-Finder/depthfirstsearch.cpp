@@ -126,7 +126,6 @@ QMultiMap<int, QVector<QPair<QString, Connection>>> DepthFirstSearch::getValidPa
 
 void DepthFirstSearch::Connectivity(QString source,adjmap *graph)
 {
-   // qDebug()<<source<<"\n";
     this->mVisited[source] = 1; // Marking visited to prevent infinite loop
 
     for(auto it1 = (*graph)[source].begin(); it1 != (*graph)[source].end(); ++it1) // # 1
@@ -149,6 +148,22 @@ bool DepthFirstSearch::isConnected(QString source,adjmap *graph)
     }
     return true;
 
+}
+
+void DepthFirstSearch::everyCityDfs(QString source, QVector<QString> &path, adjmap *graph)
+{
+
+
+    this->mVisited[source] = 1; // Marking visited to prevent infinite loop
+
+    for(auto it1 = (*graph)[source].begin(); it1 != (*graph)[source].end(); ++it1) // # 1
+    {
+        if(!mVisited[it1.key()])
+        {
+            path.push_back(it1.key());
+            everyCityDfs(it1.key(), path, graph);
+        }
+    }
 }
 
 
