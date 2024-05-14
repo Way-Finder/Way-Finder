@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/img">
+        <file>arrowdown.png</file>
+        <file>VerticalLine.png</file>
+    </qresource>
+</RCC>
