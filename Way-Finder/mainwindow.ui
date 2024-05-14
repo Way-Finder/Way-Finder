@@ -9,8 +9,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>947</width>
-    <height>610</height>
+    <width>1536</width>
+    <height>800</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -25,8 +25,8 @@
      <rect>
       <x>0</x>
       <y>10</y>
-      <width>1011</width>
-      <height>601</height>
+      <width>1541</width>
+      <height>791</height>
      </rect>
     </property>
     <layout class="QVBoxLayout" name="verticalLayout_2">
@@ -41,10 +41,10 @@
        <widget class="QWidget" name="layoutWidget">
         <property name="geometry">
          <rect>
-          <x>160</x>
-          <y>60</y>
-          <width>541</width>
-          <height>221</height>
+          <x>510</x>
+          <y>70</y>
+          <width>712</width>
+          <height>244</height>
          </rect>
         </property>
         <layout class="QVBoxLayout" name="verticalLayout">
@@ -53,6 +53,12 @@
            <layout class="QHBoxLayout" name="horizontalLayout">
             <item>
              <widget class="QLabel" name="label">
+              <property name="font">
+               <font>
+                <family>MV Boli</family>
+                <pointsize>20</pointsize>
+               </font>
+              </property>
               <property name="styleSheet">
                <string notr="true">color: rgb(0, 0, 0);</string>
               </property>
@@ -81,6 +87,12 @@
            <layout class="QHBoxLayout" name="horizontalLayout_2">
             <item>
              <widget class="QLabel" name="label_2">
+              <property name="font">
+               <font>
+                <family>MV Boli</family>
+                <pointsize>20</pointsize>
+               </font>
+              </property>
               <property name="styleSheet">
                <string notr="true">color: rgb(0, 0, 0);</string>
               </property>
@@ -109,6 +121,12 @@
            <layout class="QHBoxLayout" name="horizontalLayout_3">
             <item>
              <widget class="QLabel" name="label_3">
+              <property name="font">
+               <font>
+                <family>MV Boli</family>
+                <pointsize>20</pointsize>
+               </font>
+              </property>
               <property name="styleSheet">
                <string notr="true">color: rgb(0, 0, 0);</string>
               </property>
@@ -150,7 +168,7 @@
        <widget class="QLabel" name="label_5">
         <property name="geometry">
          <rect>
-          <x>390</x>
+          <x>770</x>
           <y>10</y>
           <width>151</width>
           <height>41</height>
@@ -158,7 +176,9 @@
         </property>
         <property name="font">
          <font>
+          <family>Segoe Script</family>
           <pointsize>16</pointsize>
+          <bold>true</bold>
           <underline>true</underline>
          </font>
         </property>
@@ -173,9 +193,9 @@
         <property name="geometry">
          <rect>
           <x>-10</x>
-          <y>300</y>
-          <width>961</width>
-          <height>301</height>
+          <y>336</y>
+          <width>1551</width>
+          <height>451</height>
          </rect>
         </property>
         <property name="styleSheet">
@@ -188,8 +208,8 @@ background-color: rgb(203, 203, 203);</string>
         <widget class="QPushButton" name="BEFES">
          <property name="geometry">
           <rect>
-           <x>440</x>
-           <y>180</y>
+           <x>670</x>
+           <y>280</y>
            <width>121</width>
            <height>51</height>
           </rect>
@@ -200,7 +220,7 @@ color: black;
 border: 3px solid black;
 border-radius: 20px;
 padding: 5px 10px; 
-</string>
+font: bold 20px;</string>
          </property>
          <property name="text">
           <string>BFS</string>
@@ -209,8 +229,8 @@ padding: 5px 10px;
         <widget class="QPushButton" name="DEFES">
          <property name="geometry">
           <rect>
-           <x>440</x>
-           <y>60</y>
+           <x>670</x>
+           <y>160</y>
            <width>121</width>
            <height>51</height>
           </rect>
@@ -221,7 +241,7 @@ color: black;
 border: 3px solid black;
 border-radius: 20px;
 padding: 5px 10px; 
-</string>
+font: bold 20px;</string>
          </property>
          <property name="text">
           <string>DFS</string>
@@ -230,9 +250,9 @@ padding: 5px 10px;
         <widget class="QPushButton" name="pushButton">
          <property name="geometry">
           <rect>
-           <x>810</x>
-           <y>230</y>
-           <width>121</width>
+           <x>1040</x>
+           <y>330</y>
+           <width>141</width>
            <height>41</height>
           </rect>
          </property>
@@ -242,7 +262,7 @@ color: black;
 border: 3px solid black;
 border-radius: 20px;
 padding: 5px 10px; 
-</string>
+font: bold 20px;</string>
          </property>
          <property name="text">
           <string>Edit Graph</string>
@@ -251,8 +271,8 @@ padding: 5px 10px;
         <widget class="QLabel" name="label_6">
          <property name="geometry">
           <rect>
-           <x>280</x>
-           <y>180</y>
+           <x>510</x>
+           <y>280</y>
            <width>101</width>
            <height>51</height>
           </rect>
@@ -272,8 +292,8 @@ padding: 5px 10px;
         <widget class="QLabel" name="label_7">
          <property name="geometry">
           <rect>
-           <x>280</x>
-           <y>60</y>
+           <x>510</x>
+           <y>160</y>
            <width>101</width>
            <height>51</height>
           </rect>
@@ -293,8 +313,8 @@ padding: 5px 10px;
         <widget class="QLabel" name="DFS_pic">
          <property name="geometry">
           <rect>
-           <x>600</x>
-           <y>10</y>
+           <x>830</x>
+           <y>110</y>
            <width>151</width>
            <height>131</height>
           </rect>
@@ -312,8 +332,8 @@ padding: 5px 10px;
         <widget class="QLabel" name="BFS_pic">
          <property name="geometry">
           <rect>
-           <x>610</x>
-           <y>140</y>
+           <x>840</x>
+           <y>240</y>
            <width>141</width>
            <height>131</height>
           </rect>

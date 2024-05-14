@@ -421,16 +421,13 @@ void GraphEditorSecWindow::removeEdge(const QString &vehicle, int cost, adjmap *
     }
 
     DepthFirstSearch isConnected(adj->begin().key(),"",0);
-    qDebug()<<adj->begin().key()<<"\n";
-    if(isConnected.isConnected(adj->begin().key(),adj)){
-        qDebug()<<"deleted\n";
-    }else {
+    if(!isConnected.isConnected(adj->begin().key(),adj)) {
         Connection oldConnection;
         oldConnection.vehicle=vehicle;
         oldConnection.cost=cost;
         (*adj)[city1][city2].append(oldConnection);
         (*adj)[city2][city1].append(oldConnection);
-        qDebug()<<"cant be deleted\n";
+        QMessageBox::warning(this,"Warning!","Cannot be deleted as it will lead to Disconnected Graph!");
     }
 
 }

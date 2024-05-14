@@ -7,6 +7,7 @@
 #include <QStackedWidget>
 #include <QCloseEvent>
 #include <qfile.h>
+#include <qmessagebox.h>
 
 MainWindow::MainWindow(adjmap * adj,QWidget *parent)
     : QMainWindow(parent)
@@ -58,6 +59,7 @@ void MainWindow::uploadFiles(const QString& filename)
                 innerMap.erase(innerIt);
 
 
+
                 if (innerMap.isEmpty()) {
                     madj->erase(outerIt);
                     break;
@@ -74,7 +76,7 @@ void MainWindow::uploadFiles(const QString& filename)
 
     QMap<QPair<QString,QString>,int> visited;
     QTextStream stream(&file);
-    stream << madj->size() << '\n';
+    stream << (madj->size()) << '\n';
 
 
     for (auto it = madj->begin(); it != madj->end(); ++it) {
@@ -129,6 +131,15 @@ void MainWindow::on_pricein_textEdited(const QString &arg1)
     }
     else
     {
+        for(auto i:ui->pricein->text()){
+            if(i<'0' || i > '9'){
+                QMessageBox::warning(this,"Warning!","Only numbers are allowed!");
+                ui->pricein->clear();
+                ui->BEFES->setEnabled(false);
+                ui->DEFES->setEnabled(false);
+                return;
+            }
+        }
         ui->BEFES->setEnabled(true);
         ui->DEFES->setEnabled(true);
     }
