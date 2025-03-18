@@ -1,6 +1,3 @@
-![Way Finder Logo](assets/image.png)
-
-
 # Way Finder
 
 ## 📖 Introduction  
